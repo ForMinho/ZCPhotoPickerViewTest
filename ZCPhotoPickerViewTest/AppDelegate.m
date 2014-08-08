@@ -7,12 +7,22 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ViewController.h"
+#import "ZCHeader.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+//    ViewController *_view = [[ViewController alloc] init];
+//    UINavigationController *_con = [[UINavigationController alloc] initWithRootViewController:_view];
+//    [self.window setRootViewController:_con];
+
+//    ZCGroupPhotoViewController *_zcGroupCon = [[ZCGroupPhotoViewController alloc] init];
+//    _zcGroupCon.groupName = @"";
+//    UINavigationController *_con = [[UINavigationController alloc] initWithRootViewController:_zcGroupCon];
+//    [self.window setRootViewController:_con];
+    
     return YES;
 }
 							

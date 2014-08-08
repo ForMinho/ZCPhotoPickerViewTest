@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
+//#import "ZCPhotoViewController.h"
+#import "ZCHeader.h"
+@interface ViewController : UIViewController<ZCPhotoViewControllerDelegate>
 
 @end

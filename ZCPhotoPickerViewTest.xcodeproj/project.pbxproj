@@ -21,6 +21,16 @@
 		CE0963A21986227800035737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0963841986227800035737 /* UIKit.framework */; };
 		CE0963AA1986227800035737 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE0963A81986227800035737 /* InfoPlist.strings */; };
 		CE0963AC1986227800035737 /* ZCPhotoPickerViewTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0963AB1986227800035737 /* ZCPhotoPickerViewTestTests.m */; };
+		CE42F145198B262500A1F442 /* ZCActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42F144198B262500A1F442 /* ZCActivityView.m */; };
+		CED6087A1987D4DD00D6903E /* Right.png in Resources */ = {isa = PBXBuildFile; fileRef = CED608791987D4DD00D6903E /* Right.png */; };
+		CED608841987D4E500D6903E /* ZCBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6087C1987D4E500D6903E /* ZCBasicViewController.m */; };
+		CED608851987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6087E1987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.m */; };
+		CED608861987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED6087F1987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.xib */; };
+		CED608871987D4E500D6903E /* ZCGroupPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED608811987D4E500D6903E /* ZCGroupPhotoViewController.m */; };
+		CED608881987D4E500D6903E /* ZCPhotoInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = CED608831987D4E500D6903E /* ZCPhotoInfomation.m */; };
+		CED6088B1987D51100D6903E /* ZCPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6088A1987D51100D6903E /* ZCPhotoViewController.m */; };
+		CED6088F1987D56100D6903E /* ZCFullPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6088E1987D56100D6903E /* ZCFullPhotoViewController.m */; };
+		CEF2D096198623D1009A9C73 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF2D095198623D1009A9C73 /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +63,24 @@
 		CE0963A71986227800035737 /* ZCPhotoPickerViewTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZCPhotoPickerViewTestTests-Info.plist"; sourceTree = "<group>"; };
 		CE0963A91986227800035737 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE0963AB1986227800035737 /* ZCPhotoPickerViewTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCPhotoPickerViewTestTests.m; sourceTree = "<group>"; };
+		CE1613341987310400DDFE1D /* ZCHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCHeader.h; sourceTree = "<group>"; };
+		CE42F143198B262500A1F442 /* ZCActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCActivityView.h; sourceTree = "<group>"; };
+		CE42F144198B262500A1F442 /* ZCActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCActivityView.m; sourceTree = "<group>"; };
+		CED608791987D4DD00D6903E /* Right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Right.png; path = ZCPhotoPickerView/Resource/Right.png; sourceTree = SOURCE_ROOT; };
+		CED6087B1987D4E500D6903E /* ZCBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCBasicViewController.h; sourceTree = "<group>"; };
+		CED6087C1987D4E500D6903E /* ZCBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCBasicViewController.m; sourceTree = "<group>"; };
+		CED6087D1987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCGroupPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		CED6087E1987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCGroupPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		CED6087F1987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZCGroupPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		CED608801987D4E500D6903E /* ZCGroupPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCGroupPhotoViewController.h; sourceTree = "<group>"; };
+		CED608811987D4E500D6903E /* ZCGroupPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCGroupPhotoViewController.m; sourceTree = "<group>"; };
+		CED608821987D4E500D6903E /* ZCPhotoInfomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCPhotoInfomation.h; sourceTree = "<group>"; };
+		CED608831987D4E500D6903E /* ZCPhotoInfomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCPhotoInfomation.m; sourceTree = "<group>"; };
+		CED608891987D51100D6903E /* ZCPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCPhotoViewController.h; sourceTree = "<group>"; };
+		CED6088A1987D51100D6903E /* ZCPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCPhotoViewController.m; sourceTree = "<group>"; };
+		CED6088D1987D56100D6903E /* ZCFullPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCFullPhotoViewController.h; sourceTree = "<group>"; };
+		CED6088E1987D56100D6903E /* ZCFullPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFullPhotoViewController.m; sourceTree = "<group>"; };
+		CEF2D095198623D1009A9C73 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF2D096198623D1009A9C73 /* AssetsLibrary.framework in Frameworks */,
 				CE0963831986227800035737 /* CoreGraphics.framework in Frameworks */,
 				CE0963851986227800035737 /* UIKit.framework in Frameworks */,
 				CE0963811986227800035737 /* Foundation.framework in Frameworks */,
@@ -82,6 +111,7 @@
 		CE0963741986227800035737 = {
 			isa = PBXGroup;
 			children = (
+				CE0963B51986227D00035737 /* ZCPhotoPickerView */,
 				CE0963861986227800035737 /* ZCPhotoPickerViewTest */,
 				CE0963A51986227800035737 /* ZCPhotoPickerViewTestTests */,
 				CE09637F1986227800035737 /* Frameworks */,
@@ -101,6 +131,7 @@
 		CE09637F1986227800035737 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEF2D095198623D1009A9C73 /* AssetsLibrary.framework */,
 				CE0963801986227800035737 /* Foundation.framework */,
 				CE0963821986227800035737 /* CoreGraphics.framework */,
 				CE0963841986227800035737 /* UIKit.framework */,
@@ -152,6 +183,55 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CE0963B51986227D00035737 /* ZCPhotoPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				CE1613341987310400DDFE1D /* ZCHeader.h */,
+				CED6088C1987D51A00D6903E /* ZCFullPhotoView */,
+				CED608781987D46D00D6903E /* ZCPhotoView */,
+				CED608751987D34D00D6903E /* Resource */,
+			);
+			path = ZCPhotoPickerView;
+			sourceTree = "<group>";
+		};
+		CED608751987D34D00D6903E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CED608791987D4DD00D6903E /* Right.png */,
+			);
+			name = Resource;
+			path = ../Resource;
+			sourceTree = "<group>";
+		};
+		CED608781987D46D00D6903E /* ZCPhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				CED6087B1987D4E500D6903E /* ZCBasicViewController.h */,
+				CED6087C1987D4E500D6903E /* ZCBasicViewController.m */,
+				CED608891987D51100D6903E /* ZCPhotoViewController.h */,
+				CED6088A1987D51100D6903E /* ZCPhotoViewController.m */,
+				CED608801987D4E500D6903E /* ZCGroupPhotoViewController.h */,
+				CED608811987D4E500D6903E /* ZCGroupPhotoViewController.m */,
+				CED6087D1987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.h */,
+				CED6087E1987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.m */,
+				CED6087F1987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.xib */,
+				CED608821987D4E500D6903E /* ZCPhotoInfomation.h */,
+				CED608831987D4E500D6903E /* ZCPhotoInfomation.m */,
+				CE42F143198B262500A1F442 /* ZCActivityView.h */,
+				CE42F144198B262500A1F442 /* ZCActivityView.m */,
+			);
+			path = ZCPhotoView;
+			sourceTree = "<group>";
+		};
+		CED6088C1987D51A00D6903E /* ZCFullPhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				CED6088D1987D56100D6903E /* ZCFullPhotoViewController.h */,
+				CED6088E1987D56100D6903E /* ZCFullPhotoViewController.m */,
+			);
+			path = ZCFullPhotoView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -199,6 +279,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "___FULLUSERNAME___";
 				TargetAttributes = {
+					CE09637C1986227800035737 = {
+						DevelopmentTeam = 8U6N3R3B8Y;
+					};
 					CE09639D1986227800035737 = {
 						TestTargetID = CE09637C1986227800035737;
 					};
@@ -230,6 +313,8 @@
 			files = (
 				CE0963991986227800035737 /* Images.xcassets in Resources */,
 				CE09638B1986227800035737 /* InfoPlist.strings in Resources */,
+				CED608861987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.xib in Resources */,
+				CED6087A1987D4DD00D6903E /* Right.png in Resources */,
 				CE0963941986227800035737 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,9 +334,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED6088B1987D51100D6903E /* ZCPhotoViewController.m in Sources */,
+				CED608841987D4E500D6903E /* ZCBasicViewController.m in Sources */,
 				CE0963971986227800035737 /* ViewController.m in Sources */,
+				CED608881987D4E500D6903E /* ZCPhotoInfomation.m in Sources */,
+				CE42F145198B262500A1F442 /* ZCActivityView.m in Sources */,
 				CE0963911986227800035737 /* AppDelegate.m in Sources */,
 				CE09638D1986227800035737 /* main.m in Sources */,
+				CED608871987D4E500D6903E /* ZCGroupPhotoViewController.m in Sources */,
+				CED6088F1987D56100D6903E /* ZCFullPhotoViewController.m in Sources */,
+				CED608851987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,10 +468,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: hui chen (BS8VB58T3M)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZCPhotoPickerViewTest/ZCPhotoPickerViewTest-Prefix.pch";
 				INFOPLIST_FILE = "ZCPhotoPickerViewTest/ZCPhotoPickerViewTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "BEFDAC15-D5DE-4A94-BB1C-30DA91B72F3B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -389,10 +483,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: hui chen (BS8VB58T3M)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZCPhotoPickerViewTest/ZCPhotoPickerViewTest-Prefix.pch";
 				INFOPLIST_FILE = "ZCPhotoPickerViewTest/ZCPhotoPickerViewTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "BEFDAC15-D5DE-4A94-BB1C-30DA91B72F3B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -456,6 +552,7 @@
 				CE0963B11986227800035737 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE0963B21986227800035737 /* Build configuration list for PBXNativeTarget "ZCPhotoPickerViewTestTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +561,7 @@
 				CE0963B41986227800035737 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
