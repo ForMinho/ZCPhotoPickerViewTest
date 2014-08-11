@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>611EE7A8-92CE-4B67-A934-22AFC0257B2F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ZCPhotoPickerViewTest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5889CB6F-5E16-4061-B84D-6AD8CA4E63F8</key>
+		<string>https://github.com/ForMinho/ZCPhotoPickerViewTest.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ZCPhotoPickerViewTest.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5889CB6F-5E16-4061-B84D-6AD8CA4E63F8</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ForMinho/ZCPhotoPickerViewTest.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5889CB6F-5E16-4061-B84D-6AD8CA4E63F8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5889CB6F-5E16-4061-B84D-6AD8CA4E63F8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ZCPhotoPickerViewTest</string>
+		</dict>
+	</array>
+</dict>
+</plist>

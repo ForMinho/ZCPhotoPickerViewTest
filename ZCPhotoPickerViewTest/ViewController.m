@@ -24,7 +24,17 @@
     [picBtn addTarget:self action:@selector(picBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:picBtn];
 }
-
+- (void) viewWillAppear:(BOOL)animated
+{
+    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]){
+        [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
+    }
+   
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+//    [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
+}
 - (void) picBtnClicked
 {
     self._viewCon = [[ZCPhotoViewController alloc] init];
@@ -37,10 +47,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void) viewWillAppear:(BOOL)animated
-{
-}
-
 
 - (void)ZCPhotoViewImgChoose:(NSDictionary *)_dic
 {

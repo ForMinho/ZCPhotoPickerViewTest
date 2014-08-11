@@ -30,11 +30,21 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+     CGRect mainRect = [UIScreen mainScreen].bounds;
     [self.view setBackgroundColor:[UIColor whiteColor]];
     self.groupArray = [[NSMutableArray alloc] init];
-//    self.imgChoose  = [[NSMutableDictionary alloc] init];
     
-    self._tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
+        [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:NO];
+    }
+    else
+    {
+        ZCUnderWindowPreView *_zcUnderView = [ZCUnderWindowPreView sharedZCUnderWindowPreView];
+        [_zcUnderView setZCUnderViewFrame:CGRectMake(0, mainRect.size.height - 100,mainRect.size.width , 100)];
+        [APPLICATION.window insertSubview:_zcUnderView atIndex:100];
+        mainRect.size.height -= 100;
+    }
+    self._tableView = [[UITableView alloc] initWithFrame:mainRect style:UITableViewStylePlain];
     [self._tableView setDelegate:self];
     [self._tableView setDataSource:self];
     [self.view addSubview:self._tableView];
@@ -53,13 +63,18 @@
         [self.groupArray addObjectsFromArray:information.groupArr];
         [self tableReload];
     }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:NO];
 }
-
+- (void)viewWillDisappear:(BOOL)animated
+{
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

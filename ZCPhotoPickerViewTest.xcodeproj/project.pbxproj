@@ -31,6 +31,9 @@
 		CED6088B1987D51100D6903E /* ZCPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6088A1987D51100D6903E /* ZCPhotoViewController.m */; };
 		CED6088F1987D56100D6903E /* ZCFullPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6088E1987D56100D6903E /* ZCFullPhotoViewController.m */; };
 		CEF2D096198623D1009A9C73 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF2D095198623D1009A9C73 /* AssetsLibrary.framework */; };
+		CEFC38FB19989D0F00639464 /* ZCUnderWindowPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFC38FA19989D0F00639464 /* ZCUnderWindowPreView.m */; };
+		CEFC38FE1998AF3E00639464 /* ZCUnderImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFC38FD1998AF3E00639464 /* ZCUnderImageView.m */; };
+		CEFC39001998C2D700639464 /* delBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFC38FF1998C2D700639464 /* delBtn.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,11 @@
 		CED6088D1987D56100D6903E /* ZCFullPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCFullPhotoViewController.h; sourceTree = "<group>"; };
 		CED6088E1987D56100D6903E /* ZCFullPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFullPhotoViewController.m; sourceTree = "<group>"; };
 		CEF2D095198623D1009A9C73 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		CEFC38F919989D0F00639464 /* ZCUnderWindowPreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCUnderWindowPreView.h; sourceTree = "<group>"; };
+		CEFC38FA19989D0F00639464 /* ZCUnderWindowPreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCUnderWindowPreView.m; sourceTree = "<group>"; };
+		CEFC38FC1998AF3E00639464 /* ZCUnderImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCUnderImageView.h; sourceTree = "<group>"; };
+		CEFC38FD1998AF3E00639464 /* ZCUnderImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCUnderImageView.m; sourceTree = "<group>"; };
+		CEFC38FF1998C2D700639464 /* delBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delBtn.png; path = ZCPhotoPickerView/Resource/delBtn.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				CED608791987D4DD00D6903E /* Right.png */,
+				CEFC38FF1998C2D700639464 /* delBtn.png */,
 			);
 			name = Resource;
 			path = ../Resource;
@@ -219,6 +228,10 @@
 				CED608831987D4E500D6903E /* ZCPhotoInfomation.m */,
 				CE42F143198B262500A1F442 /* ZCActivityView.h */,
 				CE42F144198B262500A1F442 /* ZCActivityView.m */,
+				CEFC38F919989D0F00639464 /* ZCUnderWindowPreView.h */,
+				CEFC38FA19989D0F00639464 /* ZCUnderWindowPreView.m */,
+				CEFC38FC1998AF3E00639464 /* ZCUnderImageView.h */,
+				CEFC38FD1998AF3E00639464 /* ZCUnderImageView.m */,
 			);
 			path = ZCPhotoView;
 			sourceTree = "<group>";
@@ -311,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFC39001998C2D700639464 /* delBtn.png in Resources */,
 				CE0963991986227800035737 /* Images.xcassets in Resources */,
 				CE09638B1986227800035737 /* InfoPlist.strings in Resources */,
 				CED608861987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.xib in Resources */,
@@ -336,8 +350,10 @@
 			files = (
 				CED6088B1987D51100D6903E /* ZCPhotoViewController.m in Sources */,
 				CED608841987D4E500D6903E /* ZCBasicViewController.m in Sources */,
+				CEFC38FE1998AF3E00639464 /* ZCUnderImageView.m in Sources */,
 				CE0963971986227800035737 /* ViewController.m in Sources */,
 				CED608881987D4E500D6903E /* ZCPhotoInfomation.m in Sources */,
+				CEFC38FB19989D0F00639464 /* ZCUnderWindowPreView.m in Sources */,
 				CE42F145198B262500A1F442 /* ZCActivityView.m in Sources */,
 				CE0963911986227800035737 /* AppDelegate.m in Sources */,
 				CE09638D1986227800035737 /* main.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import "ZCGroupPhotoCollectionViewCell.h"
-
+#import "ZCHeader.h"
 @implementation ZCGroupPhotoCollectionViewCell
 @synthesize _infoArr = __infoArr;
 - (id)initWithFrame:(CGRect)frame
@@ -15,15 +15,25 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor grayColor];
+        
     }
     return self;
 }
 - (IBAction)selectBtnClicked:(id)sender
 {
     self.selectBtn.selected = !self.selectBtn.selected;
+   
     if ([self.delegate respondsToSelector:@selector(ZCPhotoChooseInView: WithSelected:)]) {
         [self.delegate ZCPhotoChooseInView:self WithSelected:self.selectBtn];
     }
+    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
+        self.selectBtn.selected = NO;
+    }else
+    {
+        
+    }
+
+
 }
 - (void)getCollectionCellData:(NSArray *)data WithTag:(NSInteger)tag
 {

@@ -10,10 +10,14 @@
 #define ZCPhotoPickerViewTest_ZCHeader_h
 
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "ZCUnderWindowPreView.h"
+#import "AppDelegate.h"
 #import "ZCPhotoInfomation.h"
 #import "ZCGroupPhotoViewController.h"
 #import "ZCPhotoViewController.h"
 #import "ZCGroupPhotoCollectionViewCell.h"
 #import "ZCFullPhotoViewController.h"
 #import "ZCActivityView.h"
+#import "ZCUnderWindowPreView.h"
+#import "ZCUnderImageView.h"
 #endif

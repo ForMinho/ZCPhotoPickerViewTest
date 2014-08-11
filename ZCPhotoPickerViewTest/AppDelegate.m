@@ -10,7 +10,7 @@
 #import "ViewController.h"
 #import "ZCHeader.h"
 @implementation AppDelegate
-
+@synthesize selectView = _selectView;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.

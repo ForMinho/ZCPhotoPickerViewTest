@@ -23,29 +23,41 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选择" style:UIBarButtonItemStyleBordered target:self action:@selector(photoChooseClicked)];
+//        if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
+//            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(toTheRootView)];
+//
+//        }else
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选择" style:UIBarButtonItemStyleBordered target:self action:@selector(photoChooseClicked)];
     }
     return self;
 }
 - (void)photoChooseClicked
 {
     if ([self.delegate respondsToSelector:@selector(imageSelectedInView:)]) {
+        ZCUnderWindowPreView *_zcView = [ZCUnderWindowPreView sharedZCUnderWindowPreView];
+        [_zcView.imgArr enumerateObjectsUsingBlock:^(id obj,NSUInteger idx,BOOL *stop)
+        {
+            ZCUnderImageView *_imgView = (ZCUnderImageView *)obj;
+           [self._photoChoose setObject:_imgView.infoArr forKey:[NSString stringWithFormat:@"%d",idx]];
+        }];
+        [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
+        [_zcView reInitZCUnderView];
         [self.delegate imageSelectedInView:self._photoChoose];
     }
-//    if (self.navigationController.viewControllers.count>=1) {
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
-//    else
-//    {
-//        [self dismissViewControllerAnimated:YES completion:nil];
-//    }
     [super dismissViewController];
-//    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)toTheRootView
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+     CGRect mainRect = [UIScreen mainScreen].bounds;
+    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
+        mainRect.size.height -= 50;
+    }
     self.title = self.groupName;
     self._photoArray = [[NSMutableArray alloc] init];
     self._photoChoose= [[NSMutableDictionary alloc] init];
@@ -53,7 +65,7 @@
     UICollectionViewFlowLayout *layeOut = [[UICollectionViewFlowLayout alloc] init];
     layeOut.itemSize = CGSizeMake(70,70);
     layeOut.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5) ;
-    self._collectionView = [[UICollectionView alloc] initWithFrame:[UIScreen mainScreen].bounds collectionViewLayout:layeOut];
+    self._collectionView = [[UICollectionView alloc] initWithFrame:mainRect collectionViewLayout:layeOut];
     [self._collectionView setDelegate:self];
     [self._collectionView setDataSource:self];
     self._collectionView.allowsMultipleSelection = YES;
@@ -112,6 +124,7 @@
     ZCFullPhotoViewController *_fullPhotoView = [[ZCFullPhotoViewController alloc] init];
     UINavigationController *_nav = [[UINavigationController alloc] initWithRootViewController:_fullPhotoView];
     [self presentViewController:_nav animated:YES completion:nil];
+//    [self.navigationController pushViewController:_fullPhotoView animated:YES];
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -121,14 +134,18 @@
 #pragma mark -- ZCGroupPhotoCollectionViewCellDelegate
 - (void)ZCPhotoChooseInView:(ZCGroupPhotoCollectionViewCell *)cell WithSelected:(UIButton *)button;
 {
+    UIImage *img =[UIImage imageWithCGImage:(CGImageRef)[cell._infoArr objectAtIndex:1]];
     if (button.selected) {
-        [self._photoChoose setObject:cell._infoArr forKey:[NSString stringWithFormat:@"%d",cell.tag]];
+//        [self._photoChoose setObject:cell._infoArr forKey:[NSString stringWithFormat:@"%d",cell.tag]];
+        
+        [[ZCUnderWindowPreView sharedZCUnderWindowPreView] addPicToTheView:img WithData:cell._infoArr];
     }else
     {
-        [self._photoChoose removeObjectForKey:[NSString stringWithFormat:@"%d",cell.tag]];
+//        [self._photoChoose removeObjectForKey:[NSString stringWithFormat:@"%d",cell.tag]];
+        [[ZCUnderWindowPreView sharedZCUnderWindowPreView] removePicFromView:img WithData:cell._infoArr];
     }
 #if DEBUG
-    NSLog(@"self._photoChoose == %@",self._photoChoose);
+//    NSLog(@"self._photoChoose == %@",self._photoChoose);
 #endif
 }
 
