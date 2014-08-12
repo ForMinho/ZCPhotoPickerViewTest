@@ -11,6 +11,12 @@
 #import "ZCPhotoInfomation.h"
 #import "ZCBasicViewController.h"
 #define CELLVIEW_HEIGHT 50
+typedef enum
+{
+    ZCPhotoView_NORMAL = 1,
+    ZCPhotoView_UNDERWINDOW,
+}ZCPhotoViewType;
+
 @class ZCPhotoViewController;
 @protocol ZCPhotoViewControllerDelegate <NSObject>
 
@@ -23,7 +29,7 @@
     UIActivityIndicatorView *_activityView;
 }
 @property (weak  , nonatomic) id<ZCPhotoViewControllerDelegate> delegate;
-//@property (strong, nonatomic) NSMutableDictionary *imgChoose;
+@property (assign, nonatomic) ZCPhotoViewType zcPhotoViewType;
 @property (strong, nonatomic) NSMutableArray *groupArray;
 @property (strong, nonatomic) UITableView *_tableView;
 @end

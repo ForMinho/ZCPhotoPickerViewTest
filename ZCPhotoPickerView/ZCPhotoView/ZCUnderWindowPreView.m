@@ -21,7 +21,6 @@ static ZCUnderWindowPreView *_view = nil;
     if (_view == nil) {
         _view = [[ZCUnderWindowPreView alloc] init];
         [_view setBackgroundColor:[UIColor grayColor]];
-//        _view.selectImgNum = 0;
     }
     return _view;
 }
@@ -42,18 +41,50 @@ static ZCUnderWindowPreView *_view = nil;
 - (void)initScrollView
 {
     CGRect rect = self.frame;
+    UIButton *preViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    rect.origin.x = 10;
+    rect.origin.y = 5;
+    rect.size.width = ImgSize;
+    rect.size.height = rect.size.height - ImgSize - 2*rect.origin.y;
+    [preViewBtn setFrame:rect];
+    [preViewBtn setTitle:@"preView" forState:UIControlStateNormal];
+    [preViewBtn addTarget:self action:@selector(preViewBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:preViewBtn];
+    
+    rect.origin.x = self.frame.size.width - rect.origin.x - rect.size.width;
+    UIButton *doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [doneBtn setFrame:rect];
+    [doneBtn setTitle:@"done" forState:UIControlStateNormal];
+    [doneBtn addTarget:self action:@selector(doneBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:doneBtn];
+    
+    rect = self.frame;
     if (self._scrollView == nil) {
         rect.origin.y = rect.size.height - ImgSize;
         self._scrollView = [[UIScrollView alloc] initWithFrame:rect];
-        
         [self._scrollView setBackgroundColor:[UIColor blackColor]];
         [self insertSubview:self._scrollView atIndex:100];
     }
+}
+//    charge the pic in the view already
+- (BOOL) chargePicHadIn:(NSString *)urlStr
+{
+ 
+    for (ZCUnderImageView *obj in self.imgArr) {
+        NSString *tempStr = [obj.infoArr objectAtIndex:0];
+        if ([tempStr isEqual:urlStr]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 - (void) addPicToTheView:(UIImage *)img WithData:(NSArray *)data
 {
     if (self.imgArr == nil) {
         self.imgArr = [[NSMutableArray alloc] init];
+    }
+    if ([self chargePicHadIn:(NSString *)[data objectAtIndex:0]]) {
+        return;
     }
     [self initScrollView];
     CGRect viewRect = self.frame;
@@ -125,6 +156,20 @@ static ZCUnderWindowPreView *_view = nil;
     _view = nil;
 }
 
+#pragma mark --
+#pragma mark -- UIButton
+- (void) preViewBtnClicked
+{
+    if ([self.delegate respondsToSelector:@selector(ZCUnderPreViewPreViewBtn:)]) {
+        [self.delegate ZCUnderPreViewPreViewBtn:self.imgArr];
+    }
+}
+- (void) doneBtnClicked
+{
+    if ([self.delegate respondsToSelector:@selector(ZCUnderPreViewDoneBtn:)]) {
+        [self.delegate ZCUnderPreViewDoneBtn:self.imgArr];
+    }
+}
 
 #pragma mark -- 
 #pragma mark -- ZCUnderImageViewDelegate
@@ -132,13 +177,5 @@ static ZCUnderWindowPreView *_view = nil;
 {
     [self removePicFromView:img WithData:data];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

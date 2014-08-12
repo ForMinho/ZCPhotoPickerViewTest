@@ -21,24 +21,38 @@
     UIButton *picBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [picBtn setFrame:CGRectMake(self.view.center.x - 50, self.view.center.y - 50, 100, 100)];
     [picBtn setBackgroundColor:[UIColor grayColor]];
-    [picBtn addTarget:self action:@selector(picBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [picBtn addTarget:self action:@selector(picBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [picBtn setTag:101];
     [self.view addSubview:picBtn];
+    
+    UIButton *picBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [picBtn1 setFrame:CGRectMake(self.view.center.x - 50, self.view.center.y - 170, 100, 100)];
+    [picBtn1 setBackgroundColor:[UIColor grayColor]];
+    [picBtn1 addTarget:self action:@selector(picBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [picBtn1 setTag:102];
+    [self.view addSubview:picBtn1];
+
 }
 - (void) viewWillAppear:(BOOL)animated
 {
     if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]){
         [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
     }
-   
 }
 - (void)viewDidAppear:(BOOL)animated
 {
 //    [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
 }
-- (void) picBtnClicked
+- (void) picBtnClicked:(UIButton *)button
 {
     self._viewCon = [[ZCPhotoViewController alloc] init];
     [self._viewCon setDelegate:self];
+    if (button.tag == 101) {
+        self._viewCon.zcPhotoViewType = ZCPhotoView_NORMAL;
+    }else
+        self._viewCon.zcPhotoViewType = ZCPhotoView_UNDERWINDOW;
+
+    
     UINavigationController *_nav = [[UINavigationController alloc] initWithRootViewController:self._viewCon];
     [self presentViewController:_nav animated:YES completion:nil];
 }

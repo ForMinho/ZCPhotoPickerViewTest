@@ -41,7 +41,6 @@
     {
        
     }
-//    NSLog(@"self.navigationController.viewControllers.count === %d",self.navigationController.viewControllers.count);
 }
 
 - (void)didReceiveMemoryWarning

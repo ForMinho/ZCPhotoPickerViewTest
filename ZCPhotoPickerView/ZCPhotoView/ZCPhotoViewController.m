@@ -8,12 +8,13 @@
 
 #import "ZCPhotoViewController.h"
 #import "ZCHeader.h"
-@interface ZCPhotoViewController ()<ZCGroupPhotoControllerDelegate>
+@interface ZCPhotoViewController ()<ZCGroupPhotoControllerDelegate,ZCUnderWindowPreViewDelegate>
 
 @end
 
 @implementation ZCPhotoViewController
 //@synthesize imgChoose  = _imgChoose;
+@synthesize zcPhotoViewType = _zcPhotoViewType;
 @synthesize groupArray = _groupArray;
 @synthesize _tableView = __tableView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -25,7 +26,12 @@
     }
     return self;
 }
-
+- (void)dismissViewController
+{
+    [super dismissViewController];
+    [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
+    [[ZCUnderWindowPreView sharedZCUnderWindowPreView] reInitZCUnderView];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -33,17 +39,23 @@
      CGRect mainRect = [UIScreen mainScreen].bounds;
     [self.view setBackgroundColor:[UIColor whiteColor]];
     self.groupArray = [[NSMutableArray alloc] init];
+
     
-    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
-        [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:NO];
+    if (self.zcPhotoViewType == ZCPhotoView_UNDERWINDOW) {
+        
+        if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
+            [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:NO];
+        }
+        else
+        {
+            ZCUnderWindowPreView *_zcUnderView = [ZCUnderWindowPreView sharedZCUnderWindowPreView];
+            [_zcUnderView setZCUnderViewFrame:CGRectMake(0, mainRect.size.height - 100,mainRect.size.width , 100)];
+            [APPLICATION.window insertSubview:_zcUnderView atIndex:100];
+            mainRect.size.height -= 100;
+        }
+        [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setDelegate:self];
     }
-    else
-    {
-        ZCUnderWindowPreView *_zcUnderView = [ZCUnderWindowPreView sharedZCUnderWindowPreView];
-        [_zcUnderView setZCUnderViewFrame:CGRectMake(0, mainRect.size.height - 100,mainRect.size.width , 100)];
-        [APPLICATION.window insertSubview:_zcUnderView atIndex:100];
-        mainRect.size.height -= 100;
-    }
+    
     self._tableView = [[UITableView alloc] initWithFrame:mainRect style:UITableViewStylePlain];
     [self._tableView setDelegate:self];
     [self._tableView setDataSource:self];
@@ -69,7 +81,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:NO];
+    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
+      [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:NO];  
+    }
+    
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -200,5 +215,26 @@
         [self.delegate ZCPhotoViewImgChoose:_imgDic];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+#pragma mark --
+#pragma mark -- ZCUnderWindowPreViewDelegate
+
+- (void) ZCUnderPreViewDoneBtn:(NSArray *)infoArray;
+{
+    ZCUnderWindowPreView *_zcView = [ZCUnderWindowPreView sharedZCUnderWindowPreView];
+    NSMutableDictionary *_imgDic = [[NSMutableDictionary alloc] init];
+    [_zcView.imgArr enumerateObjectsUsingBlock:^(id obj,NSUInteger idx,BOOL *stop)
+     {
+         ZCUnderImageView *_imgView = (ZCUnderImageView *)obj;
+         [_imgDic setObject:_imgView.infoArr forKey:[NSString stringWithFormat:@"%d",idx]];
+     }];
+    [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
+    [_zcView reInitZCUnderView];
+    [self imageSelectedInView:_imgDic];
+
+}
+- (void) ZCUnderPreViewPreViewBtn:(NSArray *)infoArray;
+{
+    
 }
 @end

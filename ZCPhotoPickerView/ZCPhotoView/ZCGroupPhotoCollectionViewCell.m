@@ -26,14 +26,6 @@
     if ([self.delegate respondsToSelector:@selector(ZCPhotoChooseInView: WithSelected:)]) {
         [self.delegate ZCPhotoChooseInView:self WithSelected:self.selectBtn];
     }
-    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
-        self.selectBtn.selected = NO;
-    }else
-    {
-        
-    }
-
-
 }
 - (void)getCollectionCellData:(NSArray *)data WithTag:(NSInteger)tag
 {

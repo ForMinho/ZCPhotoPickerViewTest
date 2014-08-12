@@ -9,7 +9,7 @@
 #import "ZCGroupPhotoViewController.h"
 #import "ZCHeader.h"
 #define Collection_identifier @"collection"
-@interface ZCGroupPhotoViewController ()
+@interface ZCGroupPhotoViewController () <ZCUnderWindowPreViewDelegate>
 
 @end
 
@@ -23,10 +23,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-//        if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
-//            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(toTheRootView)];
-//
-//        }else
+        if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(toTheRootView)];
+
+        }else
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选择" style:UIBarButtonItemStyleBordered target:self action:@selector(photoChooseClicked)];
     }
     return self;
@@ -49,6 +49,8 @@
 - (void)toTheRootView
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
+    [[ZCUnderWindowPreView sharedZCUnderWindowPreView] reInitZCUnderView];
 }
 - (void)viewDidLoad
 {
@@ -56,6 +58,7 @@
     // Do any additional setup after loading the view.
      CGRect mainRect = [UIScreen mainScreen].bounds;
     if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
+        NSLog(@"[ZCUnderWindowPreView chargeZCUnderPreViewInited] == %d",[ZCUnderWindowPreView chargeZCUnderPreViewInited]);
         mainRect.size.height -= 50;
     }
     self.title = self.groupName;
@@ -117,14 +120,22 @@
     ZCGroupPhotoCollectionViewCell *cell = (ZCGroupPhotoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:Collection_identifier forIndexPath:indexPath];
     [cell getCollectionCellData:[self._photoArray objectAtIndex:indexPath.row] WithTag:indexPath.row];
     cell.delegate = self;
+    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
+        [cell.selectBtn setHidden:YES];
+    }
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    ZCGroupPhotoCollectionViewCell *cell = (ZCGroupPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]){
+         [[ZCUnderWindowPreView sharedZCUnderWindowPreView] addPicToTheView:cell.photoView.image WithData:cell._infoArr];
+        return;
+    }
+    
     ZCFullPhotoViewController *_fullPhotoView = [[ZCFullPhotoViewController alloc] init];
     UINavigationController *_nav = [[UINavigationController alloc] initWithRootViewController:_fullPhotoView];
     [self presentViewController:_nav animated:YES completion:nil];
-//    [self.navigationController pushViewController:_fullPhotoView animated:YES];
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -136,16 +147,14 @@
 {
     UIImage *img =[UIImage imageWithCGImage:(CGImageRef)[cell._infoArr objectAtIndex:1]];
     if (button.selected) {
-//        [self._photoChoose setObject:cell._infoArr forKey:[NSString stringWithFormat:@"%d",cell.tag]];
         
         [[ZCUnderWindowPreView sharedZCUnderWindowPreView] addPicToTheView:img WithData:cell._infoArr];
     }else
     {
-//        [self._photoChoose removeObjectForKey:[NSString stringWithFormat:@"%d",cell.tag]];
         [[ZCUnderWindowPreView sharedZCUnderWindowPreView] removePicFromView:img WithData:cell._infoArr];
     }
 #if DEBUG
-//    NSLog(@"self._photoChoose == %@",self._photoChoose);
+
 #endif
 }
 
@@ -165,5 +174,16 @@
     
 }
 
+#pragma mark --
+#pragma mark -- ZCUnderWindowPreViewDelegate
+
+- (void) ZCUnderPreViewDoneBtn:(NSArray *)infoArray;
+{
+    [self photoChooseClicked];
+}
+- (void) ZCUnderPreViewPreViewBtn:(NSArray *)infoArray;
+{
+    
+}
 
 @end
