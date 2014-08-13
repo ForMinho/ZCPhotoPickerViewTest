@@ -9,6 +9,10 @@
 #ifndef ZCPhotoPickerViewTest_ZCHeader_h
 #define ZCPhotoPickerViewTest_ZCHeader_h
 
+#define MAINRECT [UIScreen mainScreen].bounds
+
+
+
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "ZCUnderWindowPreView.h"
 #import "AppDelegate.h"
@@ -16,8 +20,14 @@
 #import "ZCGroupPhotoViewController.h"
 #import "ZCPhotoViewController.h"
 #import "ZCGroupPhotoCollectionViewCell.h"
-#import "ZCFullPhotoViewController.h"
-#import "ZCActivityView.h"
 #import "ZCUnderWindowPreView.h"
 #import "ZCUnderImageView.h"
+
+#import "ZCFullPhotoViewController.h"
+#import "ZCFullPhotoViewCell.h"
+
+
+#import "ZCActivityView.h"
+
+
 #endif

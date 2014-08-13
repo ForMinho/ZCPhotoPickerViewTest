@@ -21,6 +21,7 @@
 		CE0963A21986227800035737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0963841986227800035737 /* UIKit.framework */; };
 		CE0963AA1986227800035737 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE0963A81986227800035737 /* InfoPlist.strings */; };
 		CE0963AC1986227800035737 /* ZCPhotoPickerViewTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0963AB1986227800035737 /* ZCPhotoPickerViewTestTests.m */; };
+		CE310C24199B389F006D7160 /* ZCFullPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE310C23199B389F006D7160 /* ZCFullPhotoViewCell.m */; };
 		CE42F145198B262500A1F442 /* ZCActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42F144198B262500A1F442 /* ZCActivityView.m */; };
 		CED6087A1987D4DD00D6903E /* Right.png in Resources */ = {isa = PBXBuildFile; fileRef = CED608791987D4DD00D6903E /* Right.png */; };
 		CED608841987D4E500D6903E /* ZCBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6087C1987D4E500D6903E /* ZCBasicViewController.m */; };
@@ -67,6 +68,8 @@
 		CE0963A91986227800035737 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CE0963AB1986227800035737 /* ZCPhotoPickerViewTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCPhotoPickerViewTestTests.m; sourceTree = "<group>"; };
 		CE1613341987310400DDFE1D /* ZCHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCHeader.h; sourceTree = "<group>"; };
+		CE310C22199B389F006D7160 /* ZCFullPhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCFullPhotoViewCell.h; sourceTree = "<group>"; };
+		CE310C23199B389F006D7160 /* ZCFullPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCFullPhotoViewCell.m; sourceTree = "<group>"; };
 		CE42F143198B262500A1F442 /* ZCActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCActivityView.h; sourceTree = "<group>"; };
 		CE42F144198B262500A1F442 /* ZCActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCActivityView.m; sourceTree = "<group>"; };
 		CED608791987D4DD00D6903E /* Right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Right.png; path = ZCPhotoPickerView/Resource/Right.png; sourceTree = SOURCE_ROOT; };
@@ -241,6 +244,8 @@
 			children = (
 				CED6088D1987D56100D6903E /* ZCFullPhotoViewController.h */,
 				CED6088E1987D56100D6903E /* ZCFullPhotoViewController.m */,
+				CE310C22199B389F006D7160 /* ZCFullPhotoViewCell.h */,
+				CE310C23199B389F006D7160 /* ZCFullPhotoViewCell.m */,
 			);
 			path = ZCFullPhotoView;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 				CEFC38FB19989D0F00639464 /* ZCUnderWindowPreView.m in Sources */,
 				CE42F145198B262500A1F442 /* ZCActivityView.m in Sources */,
 				CE0963911986227800035737 /* AppDelegate.m in Sources */,
+				CE310C24199B389F006D7160 /* ZCFullPhotoViewCell.m in Sources */,
 				CE09638D1986227800035737 /* main.m in Sources */,
 				CED608871987D4E500D6903E /* ZCGroupPhotoViewController.m in Sources */,
 				CED6088F1987D56100D6903E /* ZCFullPhotoViewController.m in Sources */,

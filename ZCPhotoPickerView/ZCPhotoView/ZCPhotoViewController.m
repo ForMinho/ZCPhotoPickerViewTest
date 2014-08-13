@@ -36,7 +36,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-     CGRect mainRect = [UIScreen mainScreen].bounds;
+     CGRect mainRect = MAINRECT;
     [self.view setBackgroundColor:[UIColor whiteColor]];
     self.groupArray = [[NSMutableArray alloc] init];
     
@@ -231,7 +231,7 @@
     [_zcView.imgArr enumerateObjectsUsingBlock:^(id obj,NSUInteger idx,BOOL *stop)
      {
          ZCUnderImageView *_imgView = (ZCUnderImageView *)obj;
-         [_imgDic setObject:_imgView.infoArr forKey:[NSString stringWithFormat:@"%d",idx]];
+         [_imgDic setObject:_imgView.infoArr forKey:[NSString stringWithFormat:@"%lu",(unsigned long)idx]];
      }];
     [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
     [_zcView reInitZCUnderView];

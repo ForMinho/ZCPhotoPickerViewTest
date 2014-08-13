@@ -9,7 +9,7 @@
 #import "ZCGroupPhotoViewController.h"
 #import "ZCHeader.h"
 #define Collection_identifier @"collection"
-@interface ZCGroupPhotoViewController () <ZCUnderWindowPreViewDelegate>
+@interface ZCGroupPhotoViewController () <ZCUnderWindowPreViewDelegate,ZCFullPhotoViewControllerDelegate>
 
 @end
 
@@ -56,9 +56,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-     CGRect mainRect = [UIScreen mainScreen].bounds;
+     CGRect mainRect = MAINRECT;
     if ([ZCUnderWindowPreView chargeZCUnderPreViewInited] && [[ZCUnderWindowPreView sharedZCUnderWindowPreView] zcPhotoType] == ZCPhotoView_UNDERWINDOW) {
-//        NSLog(@"[ZCUnderWindowPreView chargeZCUnderPreViewInited] == %d",[ZCUnderWindowPreView chargeZCUnderPreViewInited]);
         mainRect.size.height -= 50;
     }
     self.title = self.groupName;
@@ -137,6 +136,8 @@
     }
     
     ZCFullPhotoViewController *_fullPhotoView = [[ZCFullPhotoViewController alloc] init];
+    [_fullPhotoView setDelegate:self];
+    _fullPhotoView.currentNum = indexPath.row;
     UINavigationController *_nav = [[UINavigationController alloc] initWithRootViewController:_fullPhotoView];
     [self presentViewController:_nav animated:YES completion:nil];
 }
@@ -184,18 +185,40 @@
 {
     
 }
-/*
+
 #pragma mark --
-#pragma mark -- ZCUnderWindowPreViewDelegate
-
-- (void) ZCUnderPreViewDoneBtn:(NSArray *)infoArray;
+#pragma mark -- ZCFullPhotoViewControllerDelegate
+- (NSUInteger)ZCNumberOfFullPhotoViewController
 {
-    [self photoChooseClicked];
+    return self._photoArray.count;
 }
-- (void) ZCUnderPreViewPreViewBtn:(NSArray *)infoArray;
+- (NSArray *)ZCFullViewController:(ZCFullPhotoViewController *)view picForNumber:(NSInteger)picNum
 {
+    NSArray *_arr = [NSArray arrayWithObject:[self._photoArray objectAtIndex:picNum]];
+    return _arr;
+//
+//    NSString *urlStr = [self.groupArray objectAtIndex:picNum];
+//    
+//    static ALAssetsLibrary *assetLibrary=nil;
+//    if (assetLibrary == nil) {
+//        assetLibrary = [[ALAssetsLibrary alloc] init];
+//    }
+//    
+//    NSURL *url=[NSURL URLWithString:urlStr];
+//    
+//    [assetLibrary assetForURL:url resultBlock:^(ALAsset *asset)  {
+//        UIImage *image=[UIImage imageWithCGImage:asset.thumbnail];
+////        cell.imageView.image=image;
+//        //            NSString *text = [self.groupArray objectAtIndex:indexPath.row];
+//        //            cell.textLabel.text = text;
+//        
+//    }failureBlock:^(NSError *error) {
+//        
+//        NSLog(@"error=%@",error);
+//    }
+//     ];
+
     
+//    return nil;
 }
-*/
-
 @end
