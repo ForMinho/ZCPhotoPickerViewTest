@@ -16,6 +16,7 @@ static ZCUnderWindowPreView *_view = nil;
 //@synthesize selectImgNum = _selectImgNum;
 @synthesize _scrollView = __scrollView;
 @synthesize imgArr  = _imgArr;
+@synthesize zcPhotoType =_zcPhotoType;
 + (id)sharedZCUnderWindowPreView
 {
     if (_view == nil) {

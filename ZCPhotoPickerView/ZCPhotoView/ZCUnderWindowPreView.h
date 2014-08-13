@@ -10,6 +10,13 @@
 #define ImgSize 60
 #define ImgBetween 10
 #define IMGCOUNT(num) (num+1)
+
+typedef enum
+{
+    ZCPhotoView_NORMAL = 1,
+    ZCPhotoView_UNDERWINDOW,
+}ZCPhotoViewType;
+
 @class ZCUnderWindowPreView;
 
 @protocol ZCUnderWindowPreViewDelegate <NSObject>
@@ -23,6 +30,8 @@
 @property (nonatomic, strong) NSMutableArray *imgArr;
 @property (nonatomic, strong) UIScrollView *_scrollView;
 @property (assign)            id<ZCUnderWindowPreViewDelegate> delegate;
+@property (nonatomic, assign) ZCPhotoViewType zcPhotoType;
+
 
 + (id) sharedZCUnderWindowPreView;
 + (BOOL) chargeZCUnderPreViewInited;//yes,init;no,nil;

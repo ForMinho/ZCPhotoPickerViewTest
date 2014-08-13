@@ -14,7 +14,7 @@
 
 @implementation ZCPhotoViewController
 //@synthesize imgChoose  = _imgChoose;
-@synthesize zcPhotoViewType = _zcPhotoViewType;
+//@synthesize zcPhotoViewType = _zcPhotoViewType;
 @synthesize groupArray = _groupArray;
 @synthesize _tableView = __tableView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -39,21 +39,26 @@
      CGRect mainRect = [UIScreen mainScreen].bounds;
     [self.view setBackgroundColor:[UIColor whiteColor]];
     self.groupArray = [[NSMutableArray alloc] init];
-
     
-    if (self.zcPhotoViewType == ZCPhotoView_UNDERWINDOW) {
-        
-        if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
+    {
+        if ([[ZCUnderWindowPreView sharedZCUnderWindowPreView] zcPhotoType] == ZCPhotoView_UNDERWINDOW) {
             [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:NO];
-        }
-        else
-        {
             ZCUnderWindowPreView *_zcUnderView = [ZCUnderWindowPreView sharedZCUnderWindowPreView];
             [_zcUnderView setZCUnderViewFrame:CGRectMake(0, mainRect.size.height - 100,mainRect.size.width , 100)];
             [APPLICATION.window insertSubview:_zcUnderView atIndex:100];
             mainRect.size.height -= 100;
-        }
+
+            
+        }else
+            [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
+        
+        
         [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setDelegate:self];
+        
+//        if ([[ZCUnderWindowPreView sharedZCUnderWindowPreView] zcPhotoType] == ZCPhotoView_UNDERWINDOW) {
+//            [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:NO];
+//        }else
+//             [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
     }
     
     self._tableView = [[UITableView alloc] initWithFrame:mainRect style:UITableViewStylePlain];

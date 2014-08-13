@@ -23,7 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
+        if ([[ZCUnderWindowPreView sharedZCUnderWindowPreView] zcPhotoType]==ZCPhotoView_UNDERWINDOW) {
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(toTheRootView)];
 
         }else
@@ -57,8 +57,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
      CGRect mainRect = [UIScreen mainScreen].bounds;
-    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
-        NSLog(@"[ZCUnderWindowPreView chargeZCUnderPreViewInited] == %d",[ZCUnderWindowPreView chargeZCUnderPreViewInited]);
+    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited] && [[ZCUnderWindowPreView sharedZCUnderWindowPreView] zcPhotoType] == ZCPhotoView_UNDERWINDOW) {
+//        NSLog(@"[ZCUnderWindowPreView chargeZCUnderPreViewInited] == %d",[ZCUnderWindowPreView chargeZCUnderPreViewInited]);
         mainRect.size.height -= 50;
     }
     self.title = self.groupName;
@@ -120,15 +120,18 @@
     ZCGroupPhotoCollectionViewCell *cell = (ZCGroupPhotoCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:Collection_identifier forIndexPath:indexPath];
     [cell getCollectionCellData:[self._photoArray objectAtIndex:indexPath.row] WithTag:indexPath.row];
     cell.delegate = self;
-    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]) {
+    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited] && [[ZCUnderWindowPreView sharedZCUnderWindowPreView] zcPhotoType] == ZCPhotoView_UNDERWINDOW) {
         [cell.selectBtn setHidden:YES];
+    }else
+    {
+        cell.selectBtn.selected = [self picHasSelected:(NSString *)[cell._infoArr objectAtIndex:0]] ? YES:NO;
     }
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ZCGroupPhotoCollectionViewCell *cell = (ZCGroupPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited]){
+    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited] && [[ZCUnderWindowPreView sharedZCUnderWindowPreView] zcPhotoType] == ZCPhotoView_UNDERWINDOW){
          [[ZCUnderWindowPreView sharedZCUnderWindowPreView] addPicToTheView:cell.photoView.image WithData:cell._infoArr];
         return;
     }
@@ -140,6 +143,19 @@
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+- (BOOL)picHasSelected:(NSString *)urlStr
+{
+    ZCUnderWindowPreView *_zcView = [ZCUnderWindowPreView sharedZCUnderWindowPreView];
+    
+    for (ZCUnderImageView *_imgView in _zcView.imgArr)
+    {
+        NSString * tempStr = (NSString *)[_imgView.infoArr objectAtIndex:0];
+        if ([tempStr isEqual:urlStr]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 #pragma mark --
 #pragma mark -- ZCGroupPhotoCollectionViewCellDelegate
@@ -162,18 +178,13 @@
 #pragma mark -- UICollectionView
 - (void)ZCPhotoImageReLoad:(NSArray *)imageArr
 {
-    /*
-    [self._photoArray removeAllObjects];
-    [self._photoArray addObjectsFromArray:imageArr];
-    [self._collectionView reloadData];
-    [_activityView setHidden:YES];
-     */
+
 }
 - (void)ZCPhotoGroupReLoad:(NSArray *)groupArr
 {
     
 }
-
+/*
 #pragma mark --
 #pragma mark -- ZCUnderWindowPreViewDelegate
 
@@ -185,5 +196,6 @@
 {
     
 }
+*/
 
 @end
