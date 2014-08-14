@@ -16,11 +16,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-//        [self setBackgroundColor:[UIColor blackColor]];
         self.imageView = [[UIImageView alloc] initWithFrame:frame];
         [self addSubview:self.imageView];
-        
-        [self.imageView setImage:[UIImage imageNamed:@"Right.png"]];
+        [self setBackgroundColor:[UIColor clearColor]];
+    
+
         
     }
     return self;
@@ -28,30 +28,21 @@
 
 - (void) setImgForView:(UIImage *)image
 {
-//    NSLog(@"height == %f, width == %f",image.size.height,image.size.width);
-//    yes width > height,按照高度来设置frame
-    BOOL sizeOfImg = ((image.size.width/image.size.height) > WIDTH_HEIGHT)?YES:NO;
+    float scaleOfImg = image.size.width / image.size.height;
+    
+    BOOL sizeOfImg = (scaleOfImg > WIDTH_HEIGHT) ? YES:NO;
     CGRect imgRect = self.imageView.frame;
-    imgRect.origin.x = imgRect.origin.y = 0;
-    if (!sizeOfImg) {
-        imgRect.size.width = (MAINRECT.size.height / image.size.width) * image.size.width;
+    if (sizeOfImg) {
+        imgRect.size.height = (imgRect.size.width / image.size.width) * image.size.height;
     }
     else
     {
-        imgRect.size.height = image.size.height * (MAINRECT.size.width / image.size.height);
+        imgRect.size.width = (imgRect.size.height / image.size.height) * image.size.width;
     }
     [self.imageView setFrame:imgRect];
-    [self.imageView setCenter:self.center];
+    CGPoint centerPoint = CGPointMake(self.center.x, (imgRect.size.height / 2 + (self.frame.size.height - imgRect.size.height ) / 2));
+    [self.imageView setCenter:centerPoint];
     [self.imageView setImage:image];
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

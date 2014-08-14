@@ -89,6 +89,7 @@
 - (void)dealloc
 {
     self._collectionView = nil;
+    self._photoArray = nil;
 }
 
 /*
@@ -196,29 +197,5 @@
 {
     NSArray *_arr = [NSArray arrayWithObject:[self._photoArray objectAtIndex:picNum]];
     return _arr;
-//
-//    NSString *urlStr = [self.groupArray objectAtIndex:picNum];
-//    
-//    static ALAssetsLibrary *assetLibrary=nil;
-//    if (assetLibrary == nil) {
-//        assetLibrary = [[ALAssetsLibrary alloc] init];
-//    }
-//    
-//    NSURL *url=[NSURL URLWithString:urlStr];
-//    
-//    [assetLibrary assetForURL:url resultBlock:^(ALAsset *asset)  {
-//        UIImage *image=[UIImage imageWithCGImage:asset.thumbnail];
-////        cell.imageView.image=image;
-//        //            NSString *text = [self.groupArray objectAtIndex:indexPath.row];
-//        //            cell.textLabel.text = text;
-//        
-//    }failureBlock:^(NSError *error) {
-//        
-//        NSLog(@"error=%@",error);
-//    }
-//     ];
-
-    
-//    return nil;
 }
 @end

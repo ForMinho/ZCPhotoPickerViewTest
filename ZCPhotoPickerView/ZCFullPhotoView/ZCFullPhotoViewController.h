@@ -25,15 +25,22 @@ typedef enum {
 
 
 
-@interface ZCFullPhotoViewController : ZCBasicViewController<UIScrollViewDelegate>
+@interface ZCFullPhotoViewController : ZCBasicViewController<UIScrollViewDelegate,UIGestureRecognizerDelegate>
 @property (assign, nonatomic) id<ZCFullPhotoViewControllerDelegate> delegate;
+
+@property (strong, nonatomic) UIScrollView *_scrollView;
+@property (strong, nonatomic) UITextView *textView;
+
+
+
 @property (strong, nonatomic) NSMutableArray *_showArr;
 @property (assign)            NSInteger _showNum;
 @property (assign, nonatomic) Scroll_Type scrollType;
-@property (strong, nonatomic) UIScrollView *_scrollView;
+
 @property (assign, nonatomic) NSUInteger numOfImg;
 @property (assign, nonatomic) NSInteger currentNum;
 @property (assign, nonatomic) CGFloat  scrollCenterX;
+@property (assign, nonatomic) BOOL naviHidden;//全屏yes
 
 - (id)ZCDequeueReusableCellWithIdentifier:(NSString *)identifier;
 @end
