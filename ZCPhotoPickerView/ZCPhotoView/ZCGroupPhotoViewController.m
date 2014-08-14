@@ -80,7 +80,12 @@
     NSArray *_tempArr = [_information.imageDic objectForKey:self.groupName];
     self._photoArray = (NSMutableArray *) [[_tempArr reverseObjectEnumerator]allObjects];
 }
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    if ([ZCUnderWindowPreView chargeZCUnderPreViewInited] && [[ZCUnderWindowPreView sharedZCUnderWindowPreView] zcPhotoType] == ZCPhotoView_UNDERWINDOW) {
+        [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:NO];
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -139,8 +144,9 @@
     ZCFullPhotoViewController *_fullPhotoView = [[ZCFullPhotoViewController alloc] init];
     [_fullPhotoView setDelegate:self];
     _fullPhotoView.currentNum = indexPath.row;
-    UINavigationController *_nav = [[UINavigationController alloc] initWithRootViewController:_fullPhotoView];
-    [self presentViewController:_nav animated:YES completion:nil];
+    [self.navigationController pushViewController:_fullPhotoView animated:YES];
+//    UINavigationController *_nav = [[UINavigationController alloc] initWithRootViewController:_fullPhotoView];
+//    [self presentViewController:_nav animated:YES completion:nil];
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -195,7 +201,11 @@
 }
 - (NSArray *)ZCFullViewController:(ZCFullPhotoViewController *)view picForNumber:(NSInteger)picNum
 {
-    NSArray *_arr = [NSArray arrayWithObject:[self._photoArray objectAtIndex:picNum]];
+    NSArray *_arr = [NSArray arrayWithObjects:[self._photoArray objectAtIndex:picNum],[NSString stringWithFormat:@"%d",picNum],nil];
     return _arr;
+}
+- (NSString *)ZCFullViewController_Title:(ZCFullPhotoViewController *)view picForNumber:(NSInteger)picNum
+{
+    return [NSString stringWithFormat:@"%d / %d",picNum+1,self._photoArray.count];
 }
 @end

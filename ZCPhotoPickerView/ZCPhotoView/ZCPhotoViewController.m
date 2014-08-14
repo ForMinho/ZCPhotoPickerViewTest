@@ -8,7 +8,7 @@
 
 #import "ZCPhotoViewController.h"
 #import "ZCHeader.h"
-@interface ZCPhotoViewController ()<ZCGroupPhotoControllerDelegate,ZCUnderWindowPreViewDelegate>
+@interface ZCPhotoViewController ()<ZCGroupPhotoControllerDelegate,ZCUnderWindowPreViewDelegate,ZCFullPhotoViewControllerDelegate>
 
 @end
 
@@ -240,6 +240,31 @@
 }
 - (void) ZCUnderPreViewPreViewBtn:(NSArray *)infoArray;
 {
-    
+    [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
+    ZCFullPhotoViewController *_fullPhotoView = [[ZCFullPhotoViewController alloc] init];
+    [_fullPhotoView setDelegate:self];
+    _fullPhotoView.currentNum = 0;
+    UINavigationController *_nav = [[UINavigationController alloc] initWithRootViewController:_fullPhotoView];
+    [self presentViewController:_nav animated:YES completion:nil];
+
 }
+
+#pragma mark --
+#pragma mark -- ZCFullPhotoViewControllerDelegate
+- (NSUInteger)ZCNumberOfFullPhotoViewController
+{
+    return [[ZCUnderWindowPreView sharedZCUnderWindowPreView] imgArr].count;
+}
+- (NSArray *)ZCFullViewController:(ZCFullPhotoViewController *)view picForNumber:(NSInteger)picNum
+{
+    ZCUnderImageView *_imgView = (ZCUnderImageView *)[[[ZCUnderWindowPreView sharedZCUnderWindowPreView] imgArr] objectAtIndex:picNum];
+    NSArray *_arr = [NSArray arrayWithObjects:_imgView.infoArr,[NSString stringWithFormat:@"%d",picNum],nil];
+    return _arr;
+}
+- (NSString *)ZCFullViewController_Title:(ZCFullPhotoViewController *)view picForNumber:(NSInteger)picNum
+{
+    return [NSString stringWithFormat:@"%d / %d",picNum+1,[[ZCUnderWindowPreView sharedZCUnderWindowPreView] imgArr].count];
+}
+
+
 @end

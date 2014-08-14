@@ -88,9 +88,15 @@ static int numOfCell = 0,numOfCount = 0;
     mainRect = MAINRECT;
     mainRect.origin.y = mainRect.size.height - TEXTVIEWHEIGHT ;
     mainRect.size.height = TEXTVIEWHEIGHT;
+
     self.textView = [[UITextView alloc] initWithFrame:mainRect];
-    [self.textView setEditable:NO];
-    [self.textView setBackgroundColor:[UIColor lightGrayColor]];
+    [self.textView setDelegate:self];
+//    [self.textView setFont:[UIFont boldSystemFontOfSize:20]];
+        [self.textView setFont:[UIFont fontWithName:@"Arial" size:20]];
+//    self.textView sette
+
+    [self.textView setBackgroundColor:[UIColor clearColor]];
+    [self.textView setTextColor:[UIColor whiteColor]];
     [self.view addSubview:self.textView];
 
     
@@ -104,6 +110,7 @@ static int numOfCell = 0,numOfCount = 0;
     [self._scrollView addGestureRecognizer:_pinGesture];
     
 }
+
 - (void)pinGestureRecognizer:(UITapGestureRecognizer *)_gesture
 {
     self.naviHidden = !self.naviHidden;
@@ -111,7 +118,6 @@ static int numOfCell = 0,numOfCount = 0;
         [self.navigationController setNavigationBarHidden:self.naviHidden animated:YES];
         [self.textView setHidden:self.naviHidden];
     }];
- 
 }
 //get data have to show
 - (void)startReloadFullPic:(NSUInteger)numOfPage
@@ -121,7 +127,13 @@ static int numOfCell = 0,numOfCount = 0;
     if ([self.delegate respondsToSelector:@selector(ZCFullViewController:picForNumber:)]) {
      [infoArr addObjectsFromArray:[self.delegate ZCFullViewController:self picForNumber:numOfPage]];
     }
+    if (infoArr && infoArr.count > 1) {
+        [self.textView setText:[infoArr objectAtIndex:infoArr.count - 1]];
+    }
     
+    if ([self.delegate respondsToSelector:@selector(ZCFullViewController_Title:picForNumber:)]) {
+        self.title = [self.delegate ZCFullViewController_Title:self picForNumber:numOfPage];
+    }
     NSURL *urlStr = (NSURL *)[[infoArr objectAtIndex:0] objectAtIndex:0];
 #if DEBUG
     NSLog(@"urlStr === %@",urlStr);
@@ -210,7 +222,12 @@ static int numOfCell = 0,numOfCount = 0;
 #endif
 }
 
-
+#pragma mark --
+#pragma mark -- UITextViewDelegate
+- (BOOL) textViewShouldBeginEditing:(UITextView *)textView
+{
+    return NO;
+}
 
 - (void)dealloc
 {

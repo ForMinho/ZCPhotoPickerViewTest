@@ -18,19 +18,20 @@ typedef enum {
 }Scroll_Type;
 @class ZCFullPhotoViewController;
 @protocol  ZCFullPhotoViewControllerDelegate<NSObject>
-
+@required
 - (NSUInteger) ZCNumberOfFullPhotoViewController;
 - (NSArray *)ZCFullViewController:(ZCFullPhotoViewController *)view picForNumber:(NSInteger)picNum;
+- (NSString *)ZCFullViewController_Title:(ZCFullPhotoViewController *)view picForNumber:(NSInteger)picNum;
 @end
 
 
 
-@interface ZCFullPhotoViewController : ZCBasicViewController<UIScrollViewDelegate,UIGestureRecognizerDelegate>
+@interface ZCFullPhotoViewController : ZCBasicViewController<UIScrollViewDelegate,UITextViewDelegate>
 @property (assign, nonatomic) id<ZCFullPhotoViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) UIScrollView *_scrollView;
 @property (strong, nonatomic) UITextView *textView;
-
+@property (strong, nonatomic) UIView *bgTextView;
 
 
 @property (strong, nonatomic) NSMutableArray *_showArr;
