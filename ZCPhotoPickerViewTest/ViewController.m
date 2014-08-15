@@ -51,8 +51,13 @@
     [self._viewCon setDelegate:self];
     if (button.tag == 101) {
         [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setZcPhotoType:ZCPhotoView_NORMAL];
+        self._viewCon.selectWhenFullScreen = NO;
     }else
-        [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setZcPhotoType:ZCPhotoView_UNDERWINDOW];
+    {
+         [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setZcPhotoType:ZCPhotoView_UNDERWINDOW];
+        self._viewCon.selectWhenFullScreen = YES;
+    }
+//        [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setZcPhotoType:ZCPhotoView_UNDERWINDOW];
     
     UINavigationController *_nav = [[UINavigationController alloc] initWithRootViewController:self._viewCon];
     [self presentViewController:_nav animated:YES completion:nil];

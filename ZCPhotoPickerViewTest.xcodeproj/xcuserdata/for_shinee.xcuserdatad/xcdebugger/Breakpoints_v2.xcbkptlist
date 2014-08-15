@@ -41,22 +41,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZCPhotoPickerViewTest/ViewController.m"
-            timestampString = "429586488.198891"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "-ZCPhotoViewImgChoose:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ZCPhotoPickerView/ZCPhotoView/ZCUnderWindowPreView.m"
             timestampString = "429586037.539175"
             startingColumnNumber = "9223372036854775807"
@@ -80,22 +64,6 @@
             startingLineNumber = "50"
             endingLineNumber = "50"
             landmarkName = "-picBtnClicked:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZCPhotoPickerView/ZCPhotoView/ZCGroupPhotoViewController.m"
-            timestampString = "429776533.981507"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "-ZCFullViewController:picForNumber:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

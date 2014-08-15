@@ -9,7 +9,7 @@
 #import "ZCGroupPhotoViewController.h"
 #import "ZCHeader.h"
 #define Collection_identifier @"collection"
-@interface ZCGroupPhotoViewController () <ZCUnderWindowPreViewDelegate,ZCFullPhotoViewControllerDelegate>
+@interface ZCGroupPhotoViewController () <ZCFullPhotoViewControllerDelegate>
 
 @end
 
@@ -143,7 +143,7 @@
     
     ZCFullPhotoViewController *_fullPhotoView = [[ZCFullPhotoViewController alloc] init];
     [_fullPhotoView setDelegate:self];
-//    _fullPhotoView.selectOrNot = YES;
+    _fullPhotoView.selectOrNot = self.selectWhenFullScreen;
     _fullPhotoView.currentNum = indexPath.row;
     [self.navigationController pushViewController:_fullPhotoView animated:YES];
 }

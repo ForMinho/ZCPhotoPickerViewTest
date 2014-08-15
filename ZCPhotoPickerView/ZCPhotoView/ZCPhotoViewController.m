@@ -54,11 +54,6 @@
         
         
         [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setDelegate:self];
-        
-//        if ([[ZCUnderWindowPreView sharedZCUnderWindowPreView] zcPhotoType] == ZCPhotoView_UNDERWINDOW) {
-//            [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:NO];
-//        }else
-//             [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
     }
     
     self._tableView = [[UITableView alloc] initWithFrame:mainRect style:UITableViewStylePlain];
@@ -199,6 +194,7 @@
     NSString *groupName = cell.textLabel.text;
     ZCGroupPhotoViewController *_groupView = [[ZCGroupPhotoViewController alloc] init];
     _groupView.groupName = groupName;
+    [_groupView setSelectWhenFullScreen:self.selectWhenFullScreen];
     [_groupView setDelegate:self];
     if (self.navigationController.viewControllers.count>=1  ) {
         [self.navigationController pushViewController:_groupView animated:YES];
@@ -244,6 +240,7 @@
     ZCFullPhotoViewController *_fullPhotoView = [[ZCFullPhotoViewController alloc] init];
     [_fullPhotoView setDelegate:self];
     _fullPhotoView.currentNum = 0;
+    _fullPhotoView.selectOrNot = self.selectWhenFullScreen;
     UINavigationController *_nav = [[UINavigationController alloc] initWithRootViewController:_fullPhotoView];
     [self presentViewController:_nav animated:YES completion:nil];
 

@@ -26,4 +26,5 @@
 @property (nonatomic, strong) NSMutableArray *_photoArray;
 @property (nonatomic, strong) NSMutableDictionary *_photoChoose;
 @property (nonatomic, strong) NSString *groupName;
+@property (nonatomic, assign) BOOL selectWhenFullScreen;
 @end

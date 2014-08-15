@@ -25,8 +25,9 @@
 }
 @property (weak  , nonatomic) id<ZCPhotoViewControllerDelegate> delegate;
 //@property (assign, nonatomic) ZCPhotoViewType zcPhotoViewType;
-@property (strong, nonatomic) NSMutableArray *groupArray;
+@property (strong, nonatomic) NSMutableArray *groupArray;//所有的图片信息
 @property (strong, nonatomic) UITableView *_tableView;
+@property (assign, nonatomic) BOOL selectWhenFullScreen;//在查看大图时是否可选
 @end
 
 
