@@ -38,7 +38,7 @@
         [_zcView.imgArr enumerateObjectsUsingBlock:^(id obj,NSUInteger idx,BOOL *stop)
         {
             ZCUnderImageView *_imgView = (ZCUnderImageView *)obj;
-           [self._photoChoose setObject:_imgView.infoArr forKey:[NSString stringWithFormat:@"%d",idx]];
+           [self._photoChoose setObject:_imgView.infoArr forKey:[NSString stringWithFormat:@"%d",(int)idx]];
         }];
         [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setHidden:YES];
         [_zcView reInitZCUnderView];
@@ -143,10 +143,9 @@
     
     ZCFullPhotoViewController *_fullPhotoView = [[ZCFullPhotoViewController alloc] init];
     [_fullPhotoView setDelegate:self];
+//    _fullPhotoView.selectOrNot = YES;
     _fullPhotoView.currentNum = indexPath.row;
     [self.navigationController pushViewController:_fullPhotoView animated:YES];
-//    UINavigationController *_nav = [[UINavigationController alloc] initWithRootViewController:_fullPhotoView];
-//    [self presentViewController:_nav animated:YES completion:nil];
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {

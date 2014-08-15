@@ -23,7 +23,7 @@
 @synthesize scrollCenterX=_scrollCenterX;
 @synthesize scrollType  = _scrollType;
 @synthesize naviHidden  = _naviHidden;
-static int numOfCell = 0,numOfCount = 0;
+int numOfCell = 0,numOfCount = 0;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -44,6 +44,39 @@ static int numOfCell = 0,numOfCount = 0;
     [self.view setBackgroundColor:[UIColor whiteColor]];
     self.scrollType = Scroll_Normal;
     self.naviHidden = NO;
+    
+    if (self.selectOrNot) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选择" style:UIBarButtonItemStylePlain target:self action:@selector(makePicSelected:)];
+    }
+}
+- (void) makePicSelected:(UIBarButtonItem *)item
+{
+    BOOL seletedNum = [self chargeSelectedAlready];
+    UIImage *img =[UIImage imageWithCGImage:(CGImageRef)[self._currentArr objectAtIndex:1]];
+
+    if ([self.navigationItem.rightBarButtonItem.title isEqualToString:@"选择"]) {
+          [[ZCUnderWindowPreView sharedZCUnderWindowPreView] addPicToTheView:img WithData:self._currentArr];
+        
+    }else
+    {
+        [[ZCUnderWindowPreView sharedZCUnderWindowPreView] removePicFromView:img WithData:self._currentArr];
+    }
+    self.navigationItem.rightBarButtonItem.title = !seletedNum? @"已选择":@"选择";
+    [self.navigationItem.rightBarButtonItem setAction:@selector(makePicSelected:)];
+}
+
+- (BOOL) chargeSelectedAlready
+{
+    NSURL *currentUrl = (NSURL *)[self._currentArr objectAtIndex:0];
+    for (int i = 0;i <[[ZCUnderWindowPreView sharedZCUnderWindowPreView]imgArr].count;i ++) {
+        ZCUnderImageView *_imgView = [[[ZCUnderWindowPreView sharedZCUnderWindowPreView] imgArr]objectAtIndex:i];
+        
+        NSURL *tempUrl = (NSURL *)[_imgView.infoArr objectAtIndex:0];
+        if ([currentUrl isEqual:tempUrl]) {
+            return YES;
+        }
+    }
+    return NO;
 
 }
 - (void)viewDidAppear:(BOOL)animated
@@ -62,6 +95,9 @@ static int numOfCell = 0,numOfCount = 0;
         self.numOfImg = [self.delegate ZCNumberOfFullPhotoViewController];
     }
      CGRect mainRect = MAINRECT;
+    numOfCell = self.currentNum % ZCFULLPHOTO_NUM;
+    numOfCount= self.currentNum / ZCFULLPHOTO_NUM;
+    
     if (self._scrollView == nil) {
        
         self._scrollView = [[UIScrollView alloc] initWithFrame:mainRect];
@@ -71,14 +107,24 @@ static int numOfCell = 0,numOfCount = 0;
 
         self._scrollView.pagingEnabled = YES;
         [self.view addSubview:self._scrollView];
-        self.scrollCenterX = self._scrollView.contentOffset.x;
+
+        [self._scrollView setContentOffset:CGPointMake(MAINRECT.size.width * (numOfCount * 10 +numOfCell), 0) animated:YES];
+        self.scrollCenterX = MAINRECT.size.width * (numOfCount * 10 +numOfCell);
+        
+        
     }
     self._showArr = [[NSMutableArray alloc] init];
     
     mainRect = MAINRECT;
-    mainRect.origin.x = self._scrollView.center.x - mainRect.size.width / 2;
+    mainRect.origin.x = MAINRECT.size.width * (numOfCount * ZCFULLPHOTO_NUM +numOfCell)/2;
     for (int i = 0 ; i<ZCFULLPHOTO_NUM; i ++)
     {
+        if (i < numOfCell) {
+            mainRect.origin.x = MAINRECT.size.width * (numOfCount * 10 + numOfCell - i)/2;
+        }else
+        {
+            mainRect.origin.x = MAINRECT.size.width * (numOfCount * 10 + i )/2;
+        }
         ZCFullPhotoViewCell *_cell = [[ZCFullPhotoViewCell alloc] initWithFrame:mainRect];
         [self._showArr addObject:_cell];
         [self._scrollView addSubview:_cell];
@@ -91,19 +137,16 @@ static int numOfCell = 0,numOfCount = 0;
 
     self.textView = [[UITextView alloc] initWithFrame:mainRect];
     [self.textView setDelegate:self];
-//    [self.textView setFont:[UIFont boldSystemFontOfSize:20]];
-        [self.textView setFont:[UIFont fontWithName:@"Arial" size:20]];
-//    self.textView sette
+    [self.textView setFont:[UIFont fontWithName:@"Arial" size:20]];
 
     [self.textView setBackgroundColor:[UIColor clearColor]];
     [self.textView setTextColor:[UIColor whiteColor]];
     [self.view addSubview:self.textView];
 
-    
-    numOfCell = self.currentNum % ZCFULLPHOTO_NUM;
-    numOfCount= self.currentNum / ZCFULLPHOTO_NUM;
-    [self._scrollView setContentOffset:CGPointMake(MAINRECT.size.width * (numOfCount * 10 +numOfCell), 0) animated:YES];
     [self startReloadFullPic:self.currentNum];
+    [self preViewForImage:self.currentNum + 1];
+    [self preViewForImage:self.currentNum - 1];
+    
     
     UITapGestureRecognizer *_pinGesture = [[UITapGestureRecognizer alloc] init];
     [_pinGesture addTarget:self action:@selector(pinGestureRecognizer:)];
@@ -122,10 +165,10 @@ static int numOfCell = 0,numOfCount = 0;
 //get data have to show
 - (void)startReloadFullPic:(NSUInteger)numOfPage
 {
-    
     NSMutableArray *infoArr = [[NSMutableArray alloc] init];
     if ([self.delegate respondsToSelector:@selector(ZCFullViewController:picForNumber:)]) {
      [infoArr addObjectsFromArray:[self.delegate ZCFullViewController:self picForNumber:numOfPage]];
+        self._currentArr = [NSMutableArray arrayWithArray:[infoArr objectAtIndex:0]];
     }
     if (infoArr && infoArr.count > 1) {
         [self.textView setText:[infoArr objectAtIndex:infoArr.count - 1]];
@@ -136,7 +179,6 @@ static int numOfCell = 0,numOfCount = 0;
     }
     NSURL *urlStr = (NSURL *)[[infoArr objectAtIndex:0] objectAtIndex:0];
 #if DEBUG
-    NSLog(@"urlStr === %@",urlStr);
 #endif
     static ALAssetsLibrary *assetLibrary=nil;
     if (assetLibrary == nil) {
@@ -145,18 +187,70 @@ static int numOfCell = 0,numOfCount = 0;
 
     [assetLibrary assetForURL:urlStr resultBlock:^(ALAsset *asset)  {
         UIImage *image=[UIImage imageWithCGImage:[asset defaultRepresentation].fullResolutionImage];
+        numOfCell = numOfPage % ZCFULLPHOTO_NUM;
+        numOfCount = numOfPage / ZCFULLPHOTO_NUM;
         
         ZCFullPhotoViewCell *_cell = (ZCFullPhotoViewCell *)[self._showArr objectAtIndex:numOfCell];
         CGRect mainRect = MAINRECT;
         mainRect.origin.x = (numOfCell + numOfCount * ZCFULLPHOTO_NUM) * mainRect.size.width /2;
+
 #if DEBUG
-//        NSLog(@"mainRect.origin.x == %f",mainRect.origin.x);
+        NSLog(@"mainRect.origin.x == %f",mainRect.origin.x);
+#endif
+        [_cell setFrame:mainRect];
+        [_cell setImgForView:image];
+        
+        }failureBlock:^(NSError *error) {
+
+            NSLog(@"error=%@",error);
+        }
+     ];
+    
+    if (self.selectOrNot) {
+        self.navigationItem.rightBarButtonItem.title = [self chargeSelectedAlready]?@"已选择":@"选择";
+        [self.navigationItem.rightBarButtonItem setAction:@selector(makePicSelected:)];
+    }
+
+}
+
+- (void)preViewForImage:(NSInteger)numOfPage
+{
+    if (numOfPage >= self.numOfImg || numOfPage < 0) {
+        return;
+    }
+    
+    
+    NSMutableArray *infoArr = [[NSMutableArray alloc] init];
+    if ([self.delegate respondsToSelector:@selector(ZCFullViewController:picForNumber:)]) {
+        [infoArr addObjectsFromArray:[self.delegate ZCFullViewController:self picForNumber:numOfPage]];
+    }
+
+    NSURL *urlStr = (NSURL *)[[infoArr objectAtIndex:0] objectAtIndex:0];
+#if DEBUG
+    //    NSLog(@"urlStr === %@",urlStr);
+#endif
+    static ALAssetsLibrary *assetLibrary=nil;
+    if (assetLibrary == nil) {
+        assetLibrary = [[ALAssetsLibrary alloc] init];
+    }
+    
+    [assetLibrary assetForURL:urlStr resultBlock:^(ALAsset *asset)  {
+        UIImage *image=[UIImage imageWithCGImage:[asset defaultRepresentation].fullResolutionImage];
+        numOfCell = numOfPage % ZCFULLPHOTO_NUM;
+        numOfCount = numOfPage / ZCFULLPHOTO_NUM;
+        
+        ZCFullPhotoViewCell *_cell = (ZCFullPhotoViewCell *)[self._showArr objectAtIndex:numOfCell];
+        CGRect mainRect = MAINRECT;
+        mainRect.origin.x = (numOfCell + numOfCount * ZCFULLPHOTO_NUM) * mainRect.size.width /2;
+        
+#if DEBUG
+        NSLog(@"mainRect.origin.x == %f",mainRect.origin.x);
 #endif
         [_cell setFrame:mainRect];
         [_cell setImgForView:image];
         
     }failureBlock:^(NSError *error) {
-
+        
         NSLog(@"error=%@",error);
     }
      ];
@@ -170,30 +264,31 @@ static int numOfCell = 0,numOfCount = 0;
 #pragma mark -- UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView.contentOffset.x - self.scrollCenterX > 0) {
+    if (scrollView.contentOffset.x - self.scrollCenterX > 100) {
         self.scrollType = Scroll_Right;
     }
-    else if(scrollView.contentOffset.x - self.scrollCenterX < 0)
+    else if(scrollView.contentOffset.x - self.scrollCenterX <- 100)
     {
         self.scrollType = Scroll_Left;
     }
     else{
         self.scrollType = Scroll_Normal;
     }
-//    NSLog(@"%@,%f,%f",NSStringFromSelector(_cmd),scrollView.contentOffset.x ,self.scrollCenterX);
+    
+  
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-//    NSLog(@"%@",NSStringFromSelector(_cmd));
+    NSLog(@"%@",NSStringFromSelector(_cmd));
+    
+    if (self.scrollType == Scroll_Normal) {
+        return;
+    }
+    
     if (self.scrollType == Scroll_Right)
     {
-        if (self.currentNum < self.numOfImg - 1) {
+        if (self.currentNum < self.numOfImg ) {
             self.currentNum ++ ;
-            numOfCell ++ ;
-            if (numOfCell == ZCFULLPHOTO_NUM ) {
-                numOfCell = 0;
-                numOfCount ++;
-            }
 
         }else
             self.currentNum = self.numOfImg -1;
@@ -201,24 +296,24 @@ static int numOfCell = 0,numOfCount = 0;
     else if (self.scrollType == Scroll_Left)
     {
         if (self.currentNum > 0) {
-            self.currentNum --;
-            
-            numOfCell = numOfCell - 1;
-            if (numOfCell < 0) {
-                numOfCell = ZCFULLPHOTO_NUM -1 ;
-                numOfCount --;
-            }
-
+            self.currentNum -=1;
         }
         else
             self.currentNum = 0;
     }
     self.scrollCenterX = scrollView.contentOffset.x;
+    
     [self startReloadFullPic:self.currentNum];
+
+    [self preViewForImage:self.currentNum + 1];
+
+    [self preViewForImage:self.currentNum - 1];
+
+    
+    self.scrollType = Scroll_Normal;
+
 #if DEBUG
-//    NSLog(@"self.currentNum == %ld",(long)self.currentNum);
-//    NSLog(@"self.scrollType === %d",self.scrollType);
-//    [self.navigationController setNavigationBarHidden:YES animated:YES];
+//    NSLog(@"numOfCount == %d,numOfCell == %d",numOfCount,numOfCell);
 #endif
 }
 

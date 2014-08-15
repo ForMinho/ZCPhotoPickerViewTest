@@ -29,17 +29,23 @@ typedef enum {
 @interface ZCFullPhotoViewController : ZCBasicViewController<UIScrollViewDelegate,UITextViewDelegate>
 @property (assign, nonatomic) id<ZCFullPhotoViewControllerDelegate> delegate;
 
+
+@property (assign, nonatomic) BOOL selectOrNot;//是否有选择按钮
+
+
+
 @property (strong, nonatomic) UIScrollView *_scrollView;
 @property (strong, nonatomic) UITextView *textView;
 @property (strong, nonatomic) UIView *bgTextView;
 
 
-@property (strong, nonatomic) NSMutableArray *_showArr;
+@property (strong, nonatomic) NSMutableArray *_showArr;//存放ZCFullViewCell
+@property (strong, nonatomic) NSMutableArray *_currentArr;//当前展示图片的信息
 @property (assign)            NSInteger _showNum;
 @property (assign, nonatomic) Scroll_Type scrollType;
 
 @property (assign, nonatomic) NSUInteger numOfImg;
-@property (assign, nonatomic) NSInteger currentNum;
+@property (assign, nonatomic) int  currentNum;
 @property (assign, nonatomic) CGFloat  scrollCenterX;
 @property (assign, nonatomic) BOOL naviHidden;//全屏yes
 
