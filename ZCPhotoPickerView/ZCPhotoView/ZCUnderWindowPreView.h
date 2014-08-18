@@ -36,6 +36,7 @@ typedef enum
 + (id) sharedZCUnderWindowPreView;
 + (BOOL) chargeZCUnderPreViewInited;//yes,init;no,nil;
 - (void) setZCUnderViewFrame:(CGRect)rect;
+- (CGRect)returnZCUnderViewFrame;
 - (void) addPicToTheView:(UIImage *)img WithData:(NSArray *)data;
 - (void) removePicFromView:(UIImage *)img WithData:(NSArray *)data;
 - (void)reInitZCUnderView;

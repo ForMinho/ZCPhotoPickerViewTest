@@ -39,6 +39,11 @@ static ZCUnderWindowPreView *_view = nil;
     [self setFrame:rect];
     [self initScrollView];
 }
+- (CGRect)returnZCUnderViewFrame
+{
+    return self.frame;
+}
+
 - (void)initScrollView
 {
     CGRect rect = self.frame;

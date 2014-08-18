@@ -45,7 +45,7 @@ int numOfCell = 0,numOfCount = 0;
     self.scrollType = Scroll_Normal;
     self.naviHidden = NO;
     
-    if (self.selectOrNot) {
+    if (self.selectOrNot && [[ZCUnderWindowPreView sharedZCUnderWindowPreView] zcPhotoType] == ZCPhotoView_NORMAL) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选择" style:UIBarButtonItemStylePlain target:self action:@selector(makePicSelected:)];
     }
 }

@@ -51,7 +51,7 @@
     [self._viewCon setDelegate:self];
     if (button.tag == 101) {
         [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setZcPhotoType:ZCPhotoView_NORMAL];
-        self._viewCon.selectWhenFullScreen = NO;
+        self._viewCon.selectWhenFullScreen = YES;
     }else
     {
          [[ZCUnderWindowPreView sharedZCUnderWindowPreView] setZcPhotoType:ZCPhotoView_UNDERWINDOW];

@@ -27,8 +27,8 @@
         self.imgView = [[UIImageView alloc] initWithFrame:frame];
         [self addSubview:self.imgView];
         
-        frame.origin.x =frame.origin.y = -10;
-        frame.size.height = frame.size.width = 50;
+        frame.origin.x =frame.origin.y = -5;
+        frame.size.height = frame.size.width = 20;
         
         self.delBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.delBtn setFrame:frame];
@@ -48,7 +48,7 @@
 }
 - (void) deleBtnClicked
 {
-    NSLog(@"1222222222");
+//    NSLog(@"1222222222");
     if ([self.delegate respondsToSelector:@selector(deleteZCImageView:withData:)]) {
         [self.delegate deleteZCImageView:self.img withData:self.infoArr];
     }

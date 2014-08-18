@@ -27,7 +27,7 @@
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(toTheRootView)];
 
         }else
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选择" style:UIBarButtonItemStyleBordered target:self action:@selector(photoChooseClicked)];
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(photoChooseClicked)];
     }
     return self;
 }
@@ -58,7 +58,7 @@
     // Do any additional setup after loading the view.
      CGRect mainRect = MAINRECT;
     if ([ZCUnderWindowPreView chargeZCUnderPreViewInited] && [[ZCUnderWindowPreView sharedZCUnderWindowPreView] zcPhotoType] == ZCPhotoView_UNDERWINDOW) {
-        mainRect.size.height -= 50;
+        mainRect.size.height -= [[ZCUnderWindowPreView sharedZCUnderWindowPreView] returnZCUnderViewFrame].size.height;
     }
     self.title = self.groupName;
     self._photoArray = [[NSMutableArray alloc] init];
