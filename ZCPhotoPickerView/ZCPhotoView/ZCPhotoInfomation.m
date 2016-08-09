@@ -16,6 +16,7 @@
 + (id) sharedZCPhotoInformation
 {
     NSLog(@"dev 1108");
+    NSLog(@"get tag");
     static ZCPhotoInfomation *_info = nil;
     if (_info == nil) {
         _info = [[ZCPhotoInfomation alloc] init];
