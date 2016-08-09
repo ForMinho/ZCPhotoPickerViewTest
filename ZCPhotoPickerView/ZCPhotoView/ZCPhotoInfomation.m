@@ -15,6 +15,7 @@
 @synthesize tempArr   = _tempArr;
 + (id) sharedZCPhotoInformation
 {
+    NSLog(@"dev 1108");
     static ZCPhotoInfomation *_info = nil;
     if (_info == nil) {
         _info = [[ZCPhotoInfomation alloc] init];
