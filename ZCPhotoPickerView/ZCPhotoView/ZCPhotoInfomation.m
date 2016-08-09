@@ -15,6 +15,9 @@
 @synthesize tempArr   = _tempArr;
 + (id) sharedZCPhotoInformation
 {
+    
+    
+    
     static ZCPhotoInfomation *_info = nil;
     if (_info == nil) {
         _info = [[ZCPhotoInfomation alloc] init];

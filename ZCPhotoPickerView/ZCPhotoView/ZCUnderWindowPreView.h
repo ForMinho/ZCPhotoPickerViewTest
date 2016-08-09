@@ -29,7 +29,7 @@ typedef enum
 
 @property (nonatomic, strong) NSMutableArray *imgArr;
 @property (nonatomic, strong) UIScrollView *_scrollView;
-@property (assign)            id<ZCUnderWindowPreViewDelegate> delegate;
+@property (nonatomic, assign) id<ZCUnderWindowPreViewDelegate> delegate;
 @property (nonatomic, assign) ZCPhotoViewType zcPhotoType;
 
 

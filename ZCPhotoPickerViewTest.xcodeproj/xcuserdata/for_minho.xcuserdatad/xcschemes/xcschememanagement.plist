@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ZCPhotoPickerViewTest copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>ZCPhotoPickerViewTest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>AA7D2DC81C50CE8700395437</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CE09637C1986227800035737</key>
 		<dict>
 			<key>primary</key>

@@ -8,6 +8,14 @@
 
 #import "ZCGroupPhotoCollectionViewCell.h"
 #import "ZCHeader.h"
+
+@interface ZCGroupPhotoCollectionViewCell ()
+@property (nonatomic, assign)           NSInteger cellTag;
+
+
+
+@end
+
 @implementation ZCGroupPhotoCollectionViewCell
 @synthesize _infoArr = __infoArr;
 - (id)initWithFrame:(CGRect)frame
@@ -30,7 +38,7 @@
 - (void)getCollectionCellData:(NSArray *)data WithTag:(NSInteger)tag
 {
     self._infoArr = [[NSArray alloc] initWithArray:data];
-    self.tag = tag;
+    self.cellTag = tag;
     UIImage *img =[UIImage imageWithCGImage:(CGImageRef)[self._infoArr objectAtIndex:1]];
     [self.photoView setImage:img];
 //    NSString *urlStr = [self._infoArr objectAtIndex:0];

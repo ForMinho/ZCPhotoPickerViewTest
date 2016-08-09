@@ -13,15 +13,19 @@
 
 @implementation ZCUnderWindowPreView
 static ZCUnderWindowPreView *_view = nil;
-//@synthesize selectImgNum = _selectImgNum;
-@synthesize _scrollView = __scrollView;
-@synthesize imgArr  = _imgArr;
-@synthesize zcPhotoType =_zcPhotoType;
+//@synthesize _scrollView = __scrollView;
+//@synthesize imgArr  = _imgArr;
+//@synthesize zcPhotoType =_zcPhotoType;
 + (id)sharedZCUnderWindowPreView
 {
-    if (_view == nil) {
-        _view = [[ZCUnderWindowPreView alloc] init];
-        [_view setBackgroundColor:[UIColor grayColor]];
+    if (_view == nil)
+    {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _view = [[ZCUnderWindowPreView alloc] init];
+            [_view setBackgroundColor:[UIColor grayColor]];
+
+        });
     }
     return _view;
 }
@@ -122,7 +126,7 @@ static ZCUnderWindowPreView *_view = nil;
     }
     [self.imgArr enumerateObjectsUsingBlock:^(id obj,NSUInteger idx,BOOL *stop)
     {
-        NSLog(@"%d",idx);
+        NSLog(@"%lu",(unsigned long)idx);
         ZCUnderImageView *imgView = (ZCUnderImageView *)obj;
         if (imgView.infoArr && imgView.infoArr.count) {
             NSString *tempStr = (NSString *)[imgView.infoArr objectAtIndex:0];
@@ -138,7 +142,7 @@ static ZCUnderWindowPreView *_view = nil;
 - (void)reloadScrollView:(NSInteger) deleteNum
 {
     if (deleteNum < self.imgArr.count) {
-        for (int i = deleteNum;i < self.imgArr.count; i ++) {
+        for (NSInteger i = deleteNum;i < self.imgArr.count; i ++) {
             ZCUnderImageView *_zcImgView = (ZCUnderImageView *)[self.imgArr objectAtIndex:i];
             CGRect imgRect = _zcImgView.frame;
             imgRect.origin.x -= (ImgBetween + ImgSize);

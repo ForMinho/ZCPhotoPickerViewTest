@@ -45,7 +45,7 @@ typedef enum {
 @property (assign, nonatomic) Scroll_Type scrollType;
 
 @property (assign, nonatomic) NSUInteger numOfImg;
-@property (assign, nonatomic) int  currentNum;
+@property (assign, nonatomic) NSInteger  currentNum;
 @property (assign, nonatomic) CGFloat  scrollCenterX;
 @property (assign, nonatomic) BOOL naviHidden;//全屏yes
 

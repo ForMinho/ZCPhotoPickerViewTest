@@ -255,12 +255,12 @@
 - (NSArray *)ZCFullViewController:(ZCFullPhotoViewController *)view picForNumber:(NSInteger)picNum
 {
     ZCUnderImageView *_imgView = (ZCUnderImageView *)[[[ZCUnderWindowPreView sharedZCUnderWindowPreView] imgArr] objectAtIndex:picNum];
-    NSArray *_arr = [NSArray arrayWithObjects:_imgView.infoArr,[NSString stringWithFormat:@"%d",picNum],nil];
+    NSArray *_arr = [NSArray arrayWithObjects:_imgView.infoArr,[NSString stringWithFormat:@"%ld",(long)picNum],nil];
     return _arr;
 }
 - (NSString *)ZCFullViewController_Title:(ZCFullPhotoViewController *)view picForNumber:(NSInteger)picNum
 {
-    return [NSString stringWithFormat:@"%d / %d",picNum+1,[[ZCUnderWindowPreView sharedZCUnderWindowPreView] imgArr].count];
+    return [NSString stringWithFormat:@"%ld / %lu",picNum+1,(unsigned long)[[ZCUnderWindowPreView sharedZCUnderWindowPreView] imgArr].count];
 }
 
 

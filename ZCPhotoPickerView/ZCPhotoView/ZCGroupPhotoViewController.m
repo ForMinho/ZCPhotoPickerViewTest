@@ -112,7 +112,7 @@
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
 #if DEBUG
-    NSLog(@"self._photoArray.count == %d",self._photoArray.count);
+    NSLog(@"self._photoArray.count == %lu",(unsigned long)self._photoArray.count);
 #endif
     return 1;
 }
@@ -144,6 +144,7 @@
     ZCFullPhotoViewController *_fullPhotoView = [[ZCFullPhotoViewController alloc] init];
     [_fullPhotoView setDelegate:self];
     _fullPhotoView.selectOrNot = self.selectWhenFullScreen;
+    _fullPhotoView.scrollType = Scroll_Right;
     _fullPhotoView.currentNum = indexPath.row;
     [self.navigationController pushViewController:_fullPhotoView animated:YES];
 }
@@ -200,11 +201,11 @@
 }
 - (NSArray *)ZCFullViewController:(ZCFullPhotoViewController *)view picForNumber:(NSInteger)picNum
 {
-    NSArray *_arr = [NSArray arrayWithObjects:[self._photoArray objectAtIndex:picNum],[NSString stringWithFormat:@"%d",picNum],nil];
+    NSArray *_arr = [NSArray arrayWithObjects:[self._photoArray objectAtIndex:picNum],[NSString stringWithFormat:@"%ld",(long)picNum],nil];
     return _arr;
 }
 - (NSString *)ZCFullViewController_Title:(ZCFullPhotoViewController *)view picForNumber:(NSInteger)picNum
 {
-    return [NSString stringWithFormat:@"%d / %d",picNum+1,self._photoArray.count];
+    return [NSString stringWithFormat:@"%ld / %lu",picNum+1,(unsigned long)self._photoArray.count];
 }
 @end

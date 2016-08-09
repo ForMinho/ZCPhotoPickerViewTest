@@ -14,12 +14,11 @@
 
 @end
 
-
 @interface ZCGroupPhotoCollectionViewCell : UICollectionViewCell
-@property (assign)                     NSInteger tag;
-@property (nonatomic,strong)           NSArray *_infoArr;
 @property (nonatomic, strong) IBOutlet UIButton *selectBtn;
+@property (nonatomic, strong)           NSArray *_infoArr;
 @property (nonatomic, strong) IBOutlet UIImageView *photoView;
+
 @property (nonatomic, weak)   id<ZCGroupPhotoCollectionViewCellDelegate>delegate;
 - (IBAction)selectBtnClicked:(id)sender;
 - (void)getCollectionCellData:(NSArray *)data WithTag:(NSInteger)tag;

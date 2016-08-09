@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA7D2DCA1C50CE8700395437 /* ZCPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6088A1987D51100D6903E /* ZCPhotoViewController.m */; };
+		AA7D2DCB1C50CE8700395437 /* ZCBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6087C1987D4E500D6903E /* ZCBasicViewController.m */; };
+		AA7D2DCC1C50CE8700395437 /* ZCUnderImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFC38FD1998AF3E00639464 /* ZCUnderImageView.m */; };
+		AA7D2DCD1C50CE8700395437 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0963961986227800035737 /* ViewController.m */; };
+		AA7D2DCE1C50CE8700395437 /* ZCPhotoInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = CED608831987D4E500D6903E /* ZCPhotoInfomation.m */; };
+		AA7D2DCF1C50CE8700395437 /* ZCUnderWindowPreView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFC38FA19989D0F00639464 /* ZCUnderWindowPreView.m */; };
+		AA7D2DD01C50CE8700395437 /* ZCActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42F144198B262500A1F442 /* ZCActivityView.m */; };
+		AA7D2DD11C50CE8700395437 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0963901986227800035737 /* AppDelegate.m */; };
+		AA7D2DD21C50CE8700395437 /* ZCFullPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE310C23199B389F006D7160 /* ZCFullPhotoViewCell.m */; };
+		AA7D2DD31C50CE8700395437 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE09638C1986227800035737 /* main.m */; };
+		AA7D2DD41C50CE8700395437 /* ZCGroupPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED608811987D4E500D6903E /* ZCGroupPhotoViewController.m */; };
+		AA7D2DD51C50CE8700395437 /* ZCFullPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6088E1987D56100D6903E /* ZCFullPhotoViewController.m */; };
+		AA7D2DD61C50CE8700395437 /* ZCGroupPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED6087E1987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.m */; };
+		AA7D2DD81C50CE8700395437 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF2D095198623D1009A9C73 /* AssetsLibrary.framework */; };
+		AA7D2DD91C50CE8700395437 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0963821986227800035737 /* CoreGraphics.framework */; };
+		AA7D2DDA1C50CE8700395437 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0963841986227800035737 /* UIKit.framework */; };
+		AA7D2DDB1C50CE8700395437 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0963801986227800035737 /* Foundation.framework */; };
+		AA7D2DDD1C50CE8700395437 /* delBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFC38FF1998C2D700639464 /* delBtn.png */; };
+		AA7D2DDE1C50CE8700395437 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0963981986227800035737 /* Images.xcassets */; };
+		AA7D2DDF1C50CE8700395437 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE0963891986227800035737 /* InfoPlist.strings */; };
+		AA7D2DE01C50CE8700395437 /* ZCGroupPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED6087F1987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.xib */; };
+		AA7D2DE11C50CE8700395437 /* Right.png in Resources */ = {isa = PBXBuildFile; fileRef = CED608791987D4DD00D6903E /* Right.png */; };
+		AA7D2DE21C50CE8700395437 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE0963921986227800035737 /* Main.storyboard */; };
+		AA7D2DE91C50D01100395437 /* BLite.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA7D2DE81C50D01100395437 /* BLite.plist */; };
 		CE0963811986227800035737 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0963801986227800035737 /* Foundation.framework */; };
 		CE0963831986227800035737 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0963821986227800035737 /* CoreGraphics.framework */; };
 		CE0963851986227800035737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0963841986227800035737 /* UIKit.framework */; };
@@ -48,6 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA7D2DE61C50CE8700395437 /* BLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA7D2DE81C50D01100395437 /* BLite.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BLite.plist; sourceTree = "<group>"; };
 		CE09637D1986227800035737 /* ZCPhotoPickerViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZCPhotoPickerViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0963801986227800035737 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CE0963821986227800035737 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -95,6 +121,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AA7D2DD71C50CE8700395437 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7D2DD81C50CE8700395437 /* AssetsLibrary.framework in Frameworks */,
+				AA7D2DD91C50CE8700395437 /* CoreGraphics.framework in Frameworks */,
+				AA7D2DDA1C50CE8700395437 /* UIKit.framework in Frameworks */,
+				AA7D2DDB1C50CE8700395437 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE09637A1986227800035737 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -135,6 +172,7 @@
 			children = (
 				CE09637D1986227800035737 /* ZCPhotoPickerViewTest.app */,
 				CE09639E1986227800035737 /* ZCPhotoPickerViewTestTests.xctest */,
+				AA7D2DE61C50CE8700395437 /* BLite.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				CE0963881986227800035737 /* ZCPhotoPickerViewTest-Info.plist */,
+				AA7D2DE81C50D01100395437 /* BLite.plist */,
 				CE0963891986227800035737 /* InfoPlist.strings */,
 				CE09638C1986227800035737 /* main.m */,
 				CE09638E1986227800035737 /* ZCPhotoPickerViewTest-Prefix.pch */,
@@ -253,6 +292,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AA7D2DC81C50CE8700395437 /* BLite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA7D2DE31C50CE8700395437 /* Build configuration list for PBXNativeTarget "BLite" */;
+			buildPhases = (
+				AA7D2DC91C50CE8700395437 /* Sources */,
+				AA7D2DD71C50CE8700395437 /* Frameworks */,
+				AA7D2DDC1C50CE8700395437 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BLite;
+			productName = ZCPhotoPickerViewTest;
+			productReference = AA7D2DE61C50CE8700395437 /* BLite.app */;
+			productType = "com.apple.product-type.application";
+		};
 		CE09637C1986227800035737 /* ZCPhotoPickerViewTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE0963AF1986227800035737 /* Build configuration list for PBXNativeTarget "ZCPhotoPickerViewTest" */;
@@ -320,11 +376,25 @@
 			targets = (
 				CE09637C1986227800035737 /* ZCPhotoPickerViewTest */,
 				CE09639D1986227800035737 /* ZCPhotoPickerViewTestTests */,
+				AA7D2DC81C50CE8700395437 /* BLite */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AA7D2DDC1C50CE8700395437 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7D2DDD1C50CE8700395437 /* delBtn.png in Resources */,
+				AA7D2DDE1C50CE8700395437 /* Images.xcassets in Resources */,
+				AA7D2DDF1C50CE8700395437 /* InfoPlist.strings in Resources */,
+				AA7D2DE01C50CE8700395437 /* ZCGroupPhotoCollectionViewCell.xib in Resources */,
+				AA7D2DE11C50CE8700395437 /* Right.png in Resources */,
+				AA7D2DE21C50CE8700395437 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE09637B1986227800035737 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,6 +404,7 @@
 				CE09638B1986227800035737 /* InfoPlist.strings in Resources */,
 				CED608861987D4E500D6903E /* ZCGroupPhotoCollectionViewCell.xib in Resources */,
 				CED6087A1987D4DD00D6903E /* Right.png in Resources */,
+				AA7D2DE91C50D01100395437 /* BLite.plist in Resources */,
 				CE0963941986227800035737 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +420,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AA7D2DC91C50CE8700395437 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7D2DCA1C50CE8700395437 /* ZCPhotoViewController.m in Sources */,
+				AA7D2DCB1C50CE8700395437 /* ZCBasicViewController.m in Sources */,
+				AA7D2DCC1C50CE8700395437 /* ZCUnderImageView.m in Sources */,
+				AA7D2DCD1C50CE8700395437 /* ViewController.m in Sources */,
+				AA7D2DCE1C50CE8700395437 /* ZCPhotoInfomation.m in Sources */,
+				AA7D2DCF1C50CE8700395437 /* ZCUnderWindowPreView.m in Sources */,
+				AA7D2DD01C50CE8700395437 /* ZCActivityView.m in Sources */,
+				AA7D2DD11C50CE8700395437 /* AppDelegate.m in Sources */,
+				AA7D2DD21C50CE8700395437 /* ZCFullPhotoViewCell.m in Sources */,
+				AA7D2DD31C50CE8700395437 /* main.m in Sources */,
+				AA7D2DD41C50CE8700395437 /* ZCGroupPhotoViewController.m in Sources */,
+				AA7D2DD51C50CE8700395437 /* ZCFullPhotoViewController.m in Sources */,
+				AA7D2DD61C50CE8700395437 /* ZCGroupPhotoCollectionViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE0963791986227800035737 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,6 +506,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AA7D2DE41C50CE8700395437 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: hui chen (BS8VB58T3M)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZCPhotoPickerViewTest/ZCPhotoPickerViewTest-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/ZCPhotoPickerViewTest/BLite.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "BEFDAC15-D5DE-4A94-BB1C-30DA91B72F3B";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AA7D2DE51C50CE8700395437 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: hui chen (BS8VB58T3M)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZCPhotoPickerViewTest/ZCPhotoPickerViewTest-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/ZCPhotoPickerViewTest/BLite.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "BEFDAC15-D5DE-4A94-BB1C-30DA91B72F3B";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		CE0963AD1986227800035737 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -447,6 +568,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -479,6 +601,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -558,6 +681,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AA7D2DE31C50CE8700395437 /* Build configuration list for PBXNativeTarget "BLite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7D2DE41C50CE8700395437 /* Debug */,
+				AA7D2DE51C50CE8700395437 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE0963781986227800035737 /* Build configuration list for PBXProject "ZCPhotoPickerViewTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

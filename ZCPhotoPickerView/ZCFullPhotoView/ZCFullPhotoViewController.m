@@ -13,17 +13,17 @@
 @end
 
 @implementation ZCFullPhotoViewController
-@synthesize _showArr    = __showArr;
-@synthesize _showNum    = __showNum;
-@synthesize _scrollView = __scrollView;
-@synthesize textView    = _textView;
-@synthesize delegate    = _delegate;
-@synthesize numOfImg    = _numOfImg;
-@synthesize currentNum  = _currentNum;
-@synthesize scrollCenterX=_scrollCenterX;
-@synthesize scrollType  = _scrollType;
-@synthesize naviHidden  = _naviHidden;
-int numOfCell = 0,numOfCount = 0;
+//@synthesize _showArr    = __showArr;
+//@synthesize _showNum    = __showNum;
+//@synthesize _scrollView = __scrollView;
+//@synthesize textView    = _textView;
+//@synthesize delegate    = _delegate;
+//@synthesize numOfImg    = _numOfImg;
+//@synthesize currentNum  = _currentNum;
+//@synthesize scrollCenterX=_scrollCenterX;
+//@synthesize scrollType  = _scrollType;
+//@synthesize naviHidden  = _naviHidden;
+NSInteger numOfCell = 0,numOfCount = 0;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -154,13 +154,27 @@ int numOfCell = 0,numOfCount = 0;
     
 }
 
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    UIGestureRecognizerState state = gestureRecognizer.state;
+    switch (state) {
+        case UIGestureRecognizerStateBegan:
+            
+            break;
+            
+        default:
+            break;
+    }
+    return YES;
+}
 - (void)pinGestureRecognizer:(UITapGestureRecognizer *)_gesture
 {
     self.naviHidden = !self.naviHidden;
-    [UIView animateWithDuration:0.3f animations:^{
+    [UIView animateWithDuration:2.5f animations:^{
         [self.navigationController setNavigationBarHidden:self.naviHidden animated:YES];
         [self.textView setHidden:self.naviHidden];
     }];
+    
 }
 //get data have to show
 - (void)startReloadFullPic:(NSUInteger)numOfPage
@@ -218,7 +232,6 @@ int numOfCell = 0,numOfCount = 0;
     if (numOfPage >= self.numOfImg || numOfPage < 0) {
         return;
     }
-    
     
     NSMutableArray *infoArr = [[NSMutableArray alloc] init];
     if ([self.delegate respondsToSelector:@selector(ZCFullViewController:picForNumber:)]) {
